@@ -1,6 +1,6 @@
 <main>
     <h1>Pokemon Catalogue</h1>
+    <button (click)="clearStorage()">Clear storage</button>
     <p *ngIf="loading">Loading Pokemons...</p>
     <app-pokemon-list [pokemons]="pokemons"></app-pokemon-list>
-    <button (click)="clearStorage()">Clear storage</button>
 </main>

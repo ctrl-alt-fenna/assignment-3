@@ -1,7 +1,7 @@
 <div *ngIf="pokemon" class="pokemon-card">
     <p class="pokemon-name">{{pokemon.name}}</p>
     <section>
-        <img [src]="pokemon.avatar" [alt]="pokemon.name">
+        <img src="{{pokemon.avatar}}" (error)="setSrc()" [alt]="pokemon.name" onerr="changeSrc()">
         <p class="pokemon-info">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
             magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
             commodo consequat.</p>

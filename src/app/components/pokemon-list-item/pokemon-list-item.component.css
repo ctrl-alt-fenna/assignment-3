@@ -14,7 +14,7 @@
     width: 90%;
     box-sizing: border-box;
     border: 5px solid gold;
-    background-image: linear-gradient(to top right, lightblue, red);
+    background-image: linear-gradient(to top right, lightcyan, darkorange);
 }
 .pokemon-info {
  padding: 0.25em;   
