@@ -2,12 +2,12 @@
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 .pokemon-card {
-    flex: 1 1 calc((100% - (5 * 15%) / 10));
+    flex: 1 0 calc((100% - (5 * 15%) / 10));
     background-color: lightcyan;
     border: 2px solid black;
     margin: 1em;
     width: 15vw;
-    min-height: 400px;
+    /* min-height: 400px; */
     padding: 1em;
 }
 .pokemon-name {

@@ -10,20 +10,22 @@ const { apiPokemon } = environment;
 })
 export class PokemonCatalogueService {
     private _pokemons: Pokemon[] = [];
+    private _details: [string] = [''];
     private _error: string = "";
     private _loading: boolean = false;
     private _sessionStorageService = new SessionStorageService();
 
     /* Getter functions to allow getting of readonly value*/
-    get pokemons(): Pokemon[]{ return this._pokemons}
-    get error(): string {return this._error}
-    get loading(): boolean {return this._loading}
+    get pokemons(): Pokemon[] { return this._pokemons }
+    get error(): string { return this._error }
+    get loading(): boolean { return this._loading }
+    get details(): string[] { return this._details }
     constructor(private readonly http: HttpClient) { }
     /*  Function to clear sessionStorage
         Input: No input
         Output: Cleared sessionStorage for pokemon storage key
     */
-    public clearStorage(): void  {this._sessionStorageService.clearStorage()};
+    public clearStorage(): void { this._sessionStorageService.clearStorage() };
     /*  Function to retrieve all pokemons from the API
         INPUT: No input
         OUTPUT: Sets the pokemonlist in sessionStorage and pokemon-components if sessionStorage is empty,
@@ -34,7 +36,7 @@ export class PokemonCatalogueService {
         if (storageList !== null) this._pokemons = JSON.parse(storageList);
         else {
             this._loading = true;
-            this.http.get<{ results: [{ name: string, url: string }] }>(apiPokemon)
+            this.http.get<{ results: [{ name: string, url: string }] }>(`${apiPokemon}/?limit=1`)
                 .pipe(
                     finalize(() => {
                         this._loading = false;
@@ -47,6 +49,19 @@ export class PokemonCatalogueService {
                             let splitURL = item.url.split('/');
                             let id = splitURL[splitURL.length - 2];
                             let p = new Pokemon(item.name, id)
+                            this.http.get(`${apiPokemon}/${id}/`)
+                                .subscribe({
+                                    next: (response:any) => {
+                                        let stats = response.stats
+                                        let string = ''
+                                        p.details=[]
+                                        for (const stat of stats) {
+                                            let statName = stat.stat.name[0].toUpperCase() + stat.stat.name.substring(1);
+                                            string = statName + ": " + stat.base_stat;
+                                            p.details.push(string);
+                                        }
+                                    }
+                                })
                             this._pokemons.push(p);
                         }
                         this._sessionStorageService.pokemons = this._pokemons;

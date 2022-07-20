@@ -2,8 +2,7 @@
     <p class="pokemon-name">{{pokemon.name}}</p>
     <section>
         <img src="{{pokemon.avatar}}" (error)="setSrc()" [alt]="pokemon.name" onerr="changeSrc()">
-        <p class="pokemon-info">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-            magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-            commodo consequat.</p>
+        <button class="main-btn" (click)="setDetails()">{{details ? 'Hide details' : 'Show details'}}</button>
+        <ul *ngIf="details" class="pokemon-info"><li *ngFor="let d of pokemon.details">{{d}}</li></ul>
     </section>
 </div>

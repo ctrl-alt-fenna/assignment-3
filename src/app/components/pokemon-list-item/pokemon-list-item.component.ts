@@ -7,9 +7,14 @@ import { environment } from 'src/environments/environment';
     styleUrls: ['./pokemon-list-item.component.css']
 })
 export class PokemonListItemComponent implements OnInit {
-    @Input() pokemon!: Pokemon;
+    public details:boolean = false
+    @Input() pokemon!: Pokemon
     setSrc(){
         this.pokemon.avatar = `${environment.apiSprites}/0.png`
+    }
+    // Function that inverts current selection of showing/hiding details
+    setDetails(){
+        this.details = !this.details
     }
     constructor() { }
 

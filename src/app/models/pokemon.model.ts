@@ -1,15 +1,15 @@
 import { environment } from "src/environments/environment";
 export class Pokemon {
     public name: string = '';
-    private id: string;
+    public id: string;
     public avatar: string;
-
+    public details:string[] = [''];
     public constructor(_name: string, _id: string) {
         this.formatName(_name);
         this.id = _id;
         this.avatar = `${environment.apiSprites}/${this.id}.png`;
     }
-    public formatName(name:string){
+    private formatName(name:string){
         let splitName = name.split('-')
         let formattedName = ''
         for (const word of splitName) {
@@ -17,4 +17,5 @@ export class Pokemon {
         }
         this.name = formattedName.trim();
     }
+
 }
