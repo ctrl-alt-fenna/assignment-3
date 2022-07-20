@@ -1,3 +1,6 @@
+* {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
 .pokemon-card {
     flex: 1 1 calc((100% - (5 * 15%) / 10));
     background-color: lightcyan;

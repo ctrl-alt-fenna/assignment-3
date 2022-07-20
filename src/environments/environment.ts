@@ -1,10 +1,10 @@
 // This file can be replaced during build by using the `fileReplacements` array.
 // `ng build` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
-const LIMIT = 50;
+const LIMIT = 500;
 export const environment = {
   production: false,
-  apiPokemon: `https://pokeapi.co/api/v2/pokemon/?limit=${LIMIT}&offset=1000`,
+  apiPokemon: `https://pokeapi.co/api/v2/pokemon/?limit=${LIMIT}`,
   apiSprites: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon",
   STORAGE_POKEMON_KEY: "pokemon-list"
 };
