@@ -1,0 +1,21 @@
+.pokemon-card {
+    flex: 1 1 calc((100% - (5 * 15%) / 10));
+    background-color: lightcyan;
+    border: 2px solid black;
+    margin: 1em;
+    width: 15vw;
+    min-height: 400px;
+    padding: 1em;
+}
+.pokemon-name {
+    font-weight: bold;
+}
+.pokemon-card img {
+    width: 90%;
+    box-sizing: border-box;
+    border: 5px solid gold;
+    background-image: linear-gradient(to top right, lightblue, red);
+}
+.pokemon-info {
+ padding: 0.25em;   
+}

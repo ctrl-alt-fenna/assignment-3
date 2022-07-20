@@ -13,28 +13,27 @@ export class PokemonCatalogueService {
     private _error: string = "";
     private _loading: boolean = false;
     private _sessionStorageService = new SessionStorageService();
+
     /* Getter functions to allow getting of readonly value*/
-    get pokemons(): Pokemon[] {
-        return this._pokemons;
-    }
-    get error(): string {
-        return this._error;
-    }
-    get loading(): boolean {
-        return this._loading;
-    }
+    get pokemons(): Pokemon[]{ return this._pokemons}
+    get error(): string {return this._error}
+    get loading(): boolean {return this._loading}
     constructor(private readonly http: HttpClient) { }
-    public clearStorage(): void {
-        this._sessionStorageService.clearStorage();
-    }
-    /* Function to retrieve all pokemons from the API*/
+    /*  Function to clear sessionStorage
+        Input: No input
+        Output: Cleared sessionStorage for pokemon storage key
+    */
+    public clearStorage(): void  {this._sessionStorageService.clearStorage()};
+    /*  Function to retrieve all pokemons from the API
+        INPUT: No input
+        OUTPUT: Sets the pokemonlist in sessionStorage and pokemon-components if sessionStorage is empty,
+        otherwise retrieves list from sessionStorageService so API doesn't get overloaded with requests
+    */
     public findAllPokemons(): void {
-        this._loading = true;
         let storageList = this._sessionStorageService.pokemons;
-        if (storageList !== null) {
-            this._pokemons = JSON.parse(storageList);
-        }
+        if (storageList !== null) this._pokemons = JSON.parse(storageList);
         else {
+            this._loading = true;
             this.http.get<{ results: [{ name: string, url: string }] }>(apiPokemon)
                 .pipe(
                     finalize(() => {

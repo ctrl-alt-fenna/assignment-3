@@ -29,7 +29,6 @@ export class PokemonCataloguePage implements OnInit {
     }
     clearStorage(): void {
         this.pokemonCatalogueService.clearStorage();
-        // window.location.reload();
     }
 
 }

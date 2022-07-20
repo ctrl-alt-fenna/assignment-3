@@ -6,6 +6,9 @@ const STORAGE_POKEMON_KEY = environment.STORAGE_POKEMON_KEY;
     providedIn: 'root'
 })
 export class SessionStorageService {
+    /*  Functions to set, get or clear list of pokemons in sessionStorage so the API doesn't get overloaded
+        set-INPUT | get-OUTPUT: Array of Pokemon objects to be added/retrieved
+    */
     public set pokemons(newpokemons:Pokemon[]) {
         sessionStorage.setItem(STORAGE_POKEMON_KEY, JSON.stringify(newpokemons));
     }

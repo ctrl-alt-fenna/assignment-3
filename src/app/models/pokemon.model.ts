@@ -6,7 +6,7 @@ export class Pokemon {
 
     public constructor(_name:string, _id:string)
     {
-        this.name = _name;
+        this.name = _name[0].toUpperCase() + _name.substring(1);
         this.id = _id;
         this.avatar = `${environment.apiSprites}/${this.id}.png`;
     }
