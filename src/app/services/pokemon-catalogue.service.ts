@@ -11,7 +11,7 @@ export class PokemonCatalogueService {
     private _pokemons: Pokemon[] = [];
     private _error: string = "";
     private _loading: boolean = false;
-    /* Function to allow getting of readonly value*/
+    /* Getter functions to allow getting of readonly value*/
     get pokemons(): Pokemon[] {
         return this._pokemons;
     }
@@ -25,15 +25,21 @@ export class PokemonCatalogueService {
     /* Function to retrieve all pokemons from the API*/
     public findAllPokemons(): void {
         this._loading = true;
-        this.http.get<{ results: [Pokemon] }>(apiPokemon)
+        this.http.get<{ results: [{ name:string, url:string }] }>(apiPokemon)
             .pipe(
                 finalize(() => {
                     this._loading = false;
                 })
             )
             .subscribe({
-                next: (pokemons: { results: [Pokemon] }) => {
-                    this._pokemons = pokemons.results;
+                next: (response: { results: [{name: string, url:string}] }) => {
+                    this._pokemons = [];
+                    for (const item of response.results) {
+                        let splitURL = item.url.split('/');
+                        let id = splitURL[splitURL.length - 2];
+                        let p = new Pokemon(item.name, id)
+                        this._pokemons.push(p);
+                    }
                 },
                 error: (error: HttpErrorResponse) => {
                     this._error = error.message;

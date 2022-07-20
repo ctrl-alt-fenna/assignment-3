@@ -4,11 +4,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PokemonCataloguePage } from './pages/pokemon-catalogue/pokemon-catalogue.page';
 import { PokemonListComponent } from './components/pokemon-list/pokemon-list.component';
-import { HttpClientModule } from '@angular/common/http';@NgModule({
+import { HttpClientModule } from '@angular/common/http';
+import { PokemonListItemComponent } from './components/pokemon-list-item/pokemon-list-item.component';@NgModule({
   declarations: [
     AppComponent,
     PokemonCataloguePage,
-    PokemonListComponent
+    PokemonListComponent,
+    PokemonListItemComponent
   ],
   imports: [
     BrowserModule,
