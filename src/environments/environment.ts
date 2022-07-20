@@ -5,7 +5,8 @@
 export const environment = {
   production: false,
   apiPokemon: "https://pokeapi.co/api/v2/pokemon/?limit=10",
-  apiSprites: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon"
+  apiSprites: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon",
+  STORAGE_POKEMON_KEY: "pokemon-list"
 };
 
 /*

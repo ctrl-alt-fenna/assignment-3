@@ -27,5 +27,9 @@ export class PokemonCataloguePage implements OnInit {
     ngOnInit(): void {
         this.pokemonCatalogueService.findAllPokemons();
     }
+    clearStorage(): void {
+        this.pokemonCatalogueService.clearStorage();
+        // window.location.reload();
+    }
 
 }
