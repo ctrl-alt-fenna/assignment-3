@@ -9,7 +9,8 @@ const STORAGE_USER_ID = environment.STORAGE_USER_ID
 })
 export class SessionStorageService {
     /*  Functions to set, get or clear list of pokemons in sessionStorage so the API doesn't get overloaded
-        set-INPUT | get-OUTPUT: Array of Pokemon objects to be added/retrieved
+        set-INPUT: Array of Pokemon objects to be added/retrieved
+        get-OUTPUT: Stringified Pokemon object(s)
     */
     public set pokemons(newpokemons: Pokemon[]) {
         sessionStorage.setItem(STORAGE_POKEMON_KEY, JSON.stringify(newpokemons))
@@ -31,20 +32,19 @@ export class SessionStorageService {
             storageCollection = JSON.stringify({userid: STORAGE_USER_ID, collection: [updatePokemon.name]})
          else {
             let collection = JSON.parse(storageCollection)
-            // If the pokemon was already collected, don't add again
             const index = collection.collection.indexOf(updatePokemon.name)
-            if (index === -1) {
+            // Pokemon wasn't yet collected so add it
+            if (index === -1) 
                 collection.collection.push(updatePokemon.name)
-            }
-            else {
-                collection.collection = collection.collection.splice(index - 1, 1)
-            }
+            // Pokemon was collected so splice array to remove it
+            else collection.collection = collection.collection.splice(index - 1, 1)
             storageCollection = JSON.stringify(collection)
          }
         sessionStorage.setItem(STORAGE_COLLECTION_KEY, storageCollection)
     }
+    // DEBUG function
     public clearStorage(): void {
-        sessionStorage.removeItem(STORAGE_COLLECTION_KEY)
+        sessionStorage.clear()
     }
     constructor() { }
 }

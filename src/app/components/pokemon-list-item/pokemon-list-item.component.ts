@@ -15,6 +15,9 @@ export class PokemonListItemComponent implements OnInit {
     @Output() updatePokemon = new EventEmitter<Pokemon>()
     @Output() addedToCollection = new EventEmitter<Pokemon>()
     @Output() removedFromCollection = new EventEmitter<Pokemon>()
+    /* Function that gets called if the image cannot be found on first retrieval,
+       so it can be updated in the pokemon sessionStorage list as the default (0.png) image 
+    */
     setSrc() {
         this.pokemon.avatar = `${environment.apiSprites}/0.png`
         this.updatePokemon.emit(this.pokemon)
@@ -28,33 +31,28 @@ export class PokemonListItemComponent implements OnInit {
         if (this.showstats) this.showstats = false
         this.showabilities = !this.showabilities
     }
+    /*  Function to deal with collection-clicks
+        INPUT: The card that was clicked on
+        OUTPUT: A removal or addition of the given pokemon in all collectedPokemon 
+        instances (sessionStorage & component)*/
     collectionChange() {
         if (this.collectedPokemon !== undefined && this.collectedPokemon !== null) {
             if (this.collectedPokemon.indexOf(this.pokemon.name) === -1) 
-            {
                 this.addedToCollection.emit(this.pokemon)
-                this.collected = true;
-            }
-            else {
-                this.removedFromCollection.emit(this.pokemon)
-                this.collected = false;
-            }
+            else this.removedFromCollection.emit(this.pokemon)
         }
-        else {
-            this.addedToCollection.emit(this.pokemon)
-            this.collected = true;
-        }
+        else this.addedToCollection.emit(this.pokemon)
+        this.collected = !this.collected;
     }
     constructor() { }
 
     ngOnInit(): void {
-        // Check if we need to add pokemon to collected list
-        if (this.collectedPokemon !== undefined && this.collectedPokemon !== null)
-            {
-                if (this.collectedPokemon.indexOf(this.pokemon.name) !== -1){
-                    this.collected = true;
-                } 
+        // Check if we need to flag pokemoncard as collected based on currrently saved collection
+        if (this.collectedPokemon !== undefined && this.collectedPokemon !== null) {
+            if (this.collectedPokemon.indexOf(this.pokemon.name) !== -1) {
+                this.collected = true;
             }
+        }
     }
 
 }

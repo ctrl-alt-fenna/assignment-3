@@ -28,6 +28,10 @@ export class PokemonCataloguePage implements OnInit {
         this.pokemonCatalogueService.findAllPokemons();
         this.pokemonCatalogueService.setCollection();
     }
+    /*  Functions to deal with child-component user interactions
+        INPUT: pokemon object
+        OUTPUT: updated Pokemons list / trainer collection
+    */
     updatePokemon(pokemon: Pokemon): void {
         this.pokemonCatalogueService.updatePokemons(pokemon);
     }

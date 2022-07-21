@@ -13,8 +13,6 @@ export class PokemonListComponent implements OnInit {
     @Output() removedFromCollection = new EventEmitter<Pokemon>()
   constructor() { }
 
-  ngOnInit(): void {
-  }
   updatePokemon(pokemons:Pokemon)
   {
     this.updatePokemons.emit(pokemons)
@@ -27,4 +25,5 @@ export class PokemonListComponent implements OnInit {
   {
     this.removedFromCollection.emit(pokemon)
   }
+  ngOnInit(): void {  }
 }

@@ -24,6 +24,10 @@ export class PokemonCatalogueService {
     get baseStats(): string[] { return this._details }
     constructor(private readonly http: HttpClient) { }
 
+    /*  Function to update current component trainer-collectionlist to match the sessionStorage
+        INPUT: Either a Pokemon-object to be added or null if we just want to update
+        OUTPUT: Updated component- collectedPokemon-list
+    */
     public setCollection(pokemon?: Pokemon): void {
         if (pokemon) this._sessionStorageService.setTrainerCollection(pokemon)
         if (this._sessionStorageService.trainerCollection !== null){
@@ -60,6 +64,7 @@ export class PokemonCatalogueService {
                 .subscribe({
                     next: (response: { results: [{ name: string, url: string }] }) => {
                         let count = 0
+                        //!! CHECK See if it is possible to move this to sep. function
                         for (const item of response.results) {
                             let splitURL = item.url.split('/')
                             let id = splitURL[splitURL.length - 2]
