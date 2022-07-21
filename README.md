@@ -1,26 +1,28 @@
-# Assignment3
+# Assignment 3
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.0.6.
+A Pokemon trainer web-app, using the [PokeAPI](https://pokeapi.co) for the Pokemon information. It was created using [Angular](https://angular.io)
 
-## Development server
+# Install
+```
+git clone https://gitlab.com/fransijn/assignment-3.git
+```
+# Usage 
+To start the app in a dev server, first install [Angular CLI](https://www.github.com/angular/angular-cli) to execute:
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+```
+npm install -g @angular/cli
+ng serve --open
+```
 
-## Code scaffolding
+# About This Project 
+* User can view a list of Pokemon retrieved from PokeAPI
+* User can show details of these Pokemon
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+# Screensots 
 
-## Build
+# Authors and Acknowledgments 
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+Project created by Nienke Kapers and Fenna Ransijn. All the information and sprites for the Pokemons were provided by the [PokeAPI](https://www.pokeapi.co). 
 
 ## Further help
 
