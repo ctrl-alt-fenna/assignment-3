@@ -5,12 +5,15 @@ import { AppComponent } from './app.component';
 import { PokemonCataloguePage } from './pages/pokemon-catalogue/pokemon-catalogue.page';
 import { PokemonListComponent } from './components/pokemon-list/pokemon-list.component';
 import { HttpClientModule } from '@angular/common/http';
-import { PokemonListItemComponent } from './components/pokemon-list-item/pokemon-list-item.component';@NgModule({
+import { PokemonListItemComponent } from './components/pokemon-list-item/pokemon-list-item.component';
+import { NavigationComponent } from './components/navigation/navigation.component';
+@NgModule({
   declarations: [
     AppComponent,
     PokemonCataloguePage,
     PokemonListComponent,
-    PokemonListItemComponent
+    PokemonListItemComponent,
+    NavigationComponent
   ],
   imports: [
     BrowserModule,

@@ -40,7 +40,7 @@ export class PokemonListItemComponent implements OnInit {
         this.wasCollected = false
         if (this.collectedPokemon !== undefined && this.collectedPokemon !== null) {
             if (this.collectedPokemon.indexOf(this.pokemon.name) === -1) {
-
+                this.wasCollected = true
                 this.addedToCollection.emit(this.pokemon)
             }
             else {
@@ -48,9 +48,10 @@ export class PokemonListItemComponent implements OnInit {
             }
         }
         else {
+            this.wasCollected = true
             this.addedToCollection.emit(this.pokemon)
         }
-        if (this.collected) this.wasCollected = true
+        if (this.collected) this.wasCollected = true;
         this.collected = !this.collected;
     }
     constructor() { }
