@@ -1,3 +1,7 @@
 <div class="pokemon-list">
-    <app-pokemon-list-item *ngFor="let pokemon of pokemons" [pokemon]="pokemon" (updatePokemon)="updatePokemon(pokemons)"></app-pokemon-list-item>
+    <app-pokemon-list-item *ngFor="let pokemon of pokemons" 
+    [pokemon]="pokemon" 
+    [collectedPokemon]="collectedPokemons"
+    (updatePokemon)="updatePokemon($event)" 
+    (addedToCollection)="onaddedToCollection($event)"></app-pokemon-list-item>
 </div>

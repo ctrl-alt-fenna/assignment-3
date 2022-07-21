@@ -8,8 +8,11 @@ import { PokemonCatalogueService } from 'src/app/services/pokemon-catalogue.serv
 })
 export class PokemonCataloguePage implements OnInit {
 
-    get pokemons(): Pokemon[]{
+    get pokemons(): Pokemon[] {
         return this.pokemonCatalogueService.pokemons;
+    }
+    get collectedPokemon(): any {
+        return this.pokemonCatalogueService.collectedPokemons;
     }
     get loading(): boolean {
         return this.pokemonCatalogueService.loading;
@@ -23,12 +26,16 @@ export class PokemonCataloguePage implements OnInit {
 
     ngOnInit(): void {
         this.pokemonCatalogueService.findAllPokemons();
+        this.pokemonCatalogueService.setCollection();
     }
     clearStorage(): void {
         this.pokemonCatalogueService.clearStorage();
     }
-    updatePokemon(pokemons:Pokemon[]):void {
-        this.pokemonCatalogueService.updatePokemons(pokemons); 
+    updatePokemon(pokemon: Pokemon): void {
+        this.pokemonCatalogueService.updatePokemons(pokemon);
+    }
+    onaddedToCollection(pokemon: Pokemon): void {
+        this.pokemonCatalogueService.setCollection(pokemon)
     }
 
 }
