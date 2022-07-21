@@ -1,9 +1,11 @@
-<div *ngIf="pokemon" class="pokemon-card">
+<div *ngIf="pokemon" class="pokemon-card {{collected ? 'collected' : ''}} {{wasCollected ? 'wascollected' : ''}}">
     <p>
-        <span class="pokemon-name">{{pokemon.name}}</span><span>{{collected ? '(collected)' : ''}}</span>
+        <span class="pokemon-name">{{pokemon.name}}</span>
     </p>
     <section>
-        <img src="{{pokemon.avatar}}" (error)="setSrc()" [alt]="pokemon.name" class="avatar">
+        <div class="avatar-wrapper">
+            <img src="{{pokemon.avatar}}" (error)="setSrc()" [alt]="pokemon.name" class="avatar">
+        </div>
         <a class="collect-btn" (click)="collectionChange()">
             <img src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png'>
         </a>

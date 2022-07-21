@@ -10,6 +10,7 @@ export class PokemonListItemComponent implements OnInit {
     public showstats: boolean = false
     public showabilities: boolean = false
     public collected: boolean = false
+    public wasCollected:boolean = false; 
     @Input() pokemon!: Pokemon
     @Input() collectedPokemon?: string[]
     @Output() updatePokemon = new EventEmitter<Pokemon>()
@@ -36,12 +37,20 @@ export class PokemonListItemComponent implements OnInit {
         OUTPUT: A removal or addition of the given pokemon in all collectedPokemon 
         instances (sessionStorage & component)*/
     collectionChange() {
+        this.wasCollected = false
         if (this.collectedPokemon !== undefined && this.collectedPokemon !== null) {
-            if (this.collectedPokemon.indexOf(this.pokemon.name) === -1) 
+            if (this.collectedPokemon.indexOf(this.pokemon.name) === -1) {
+
                 this.addedToCollection.emit(this.pokemon)
-            else this.removedFromCollection.emit(this.pokemon)
+            }
+            else {
+                this.removedFromCollection.emit(this.pokemon)
+            }
         }
-        else this.addedToCollection.emit(this.pokemon)
+        else {
+            this.addedToCollection.emit(this.pokemon)
+        }
+        if (this.collected) this.wasCollected = true
         this.collected = !this.collected;
     }
     constructor() { }
