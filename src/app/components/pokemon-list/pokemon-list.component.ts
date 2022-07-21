@@ -10,6 +10,7 @@ export class PokemonListComponent implements OnInit {
     @Input() collectedPokemons?: string[]
     @Output() updatePokemons = new EventEmitter<Pokemon>()
     @Output() addedToCollection = new EventEmitter<Pokemon>()
+    @Output() removedFromCollection = new EventEmitter<Pokemon>()
   constructor() { }
 
   ngOnInit(): void {
@@ -18,8 +19,12 @@ export class PokemonListComponent implements OnInit {
   {
     this.updatePokemons.emit(pokemons)
   }
-  onaddedToCollection(pokemon:Pokemon)
+  onAddedToCollection(pokemon:Pokemon)
   {
     this.addedToCollection.emit(pokemon)
+  }
+  onRemovedFromCollection(pokemon:Pokemon)
+  {
+    this.removedFromCollection.emit(pokemon)
   }
 }

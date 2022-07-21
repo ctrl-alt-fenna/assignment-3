@@ -28,13 +28,13 @@ export class PokemonCataloguePage implements OnInit {
         this.pokemonCatalogueService.findAllPokemons();
         this.pokemonCatalogueService.setCollection();
     }
-    clearStorage(): void {
-        this.pokemonCatalogueService.clearStorage();
-    }
     updatePokemon(pokemon: Pokemon): void {
         this.pokemonCatalogueService.updatePokemons(pokemon);
     }
-    onaddedToCollection(pokemon: Pokemon): void {
+    onAddedToCollection(pokemon: Pokemon): void {
+        this.pokemonCatalogueService.setCollection(pokemon)
+    }
+    onRemovedFromCollection(pokemon: Pokemon): void {
         this.pokemonCatalogueService.setCollection(pokemon)
     }
 

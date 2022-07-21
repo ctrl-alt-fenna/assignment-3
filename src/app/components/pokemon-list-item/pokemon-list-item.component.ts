@@ -14,6 +14,7 @@ export class PokemonListItemComponent implements OnInit {
     @Input() collectedPokemon?: string[]
     @Output() updatePokemon = new EventEmitter<Pokemon>()
     @Output() addedToCollection = new EventEmitter<Pokemon>()
+    @Output() removedFromCollection = new EventEmitter<Pokemon>()
     setSrc() {
         this.pokemon.avatar = `${environment.apiSprites}/0.png`
         this.updatePokemon.emit(this.pokemon)
@@ -27,12 +28,16 @@ export class PokemonListItemComponent implements OnInit {
         if (this.showstats) this.showstats = false
         this.showabilities = !this.showabilities
     }
-    addToCollection() {
-        if (this.collectedPokemon !== undefined) {
+    collectionChange() {
+        if (this.collectedPokemon !== undefined && this.collectedPokemon !== null) {
             if (this.collectedPokemon.indexOf(this.pokemon.name) === -1) 
             {
                 this.addedToCollection.emit(this.pokemon)
                 this.collected = true;
+            }
+            else {
+                this.removedFromCollection.emit(this.pokemon)
+                this.collected = false;
             }
         }
         else {
@@ -43,6 +48,7 @@ export class PokemonListItemComponent implements OnInit {
     constructor() { }
 
     ngOnInit(): void {
+        // Check if we need to add pokemon to collected list
         if (this.collectedPokemon !== undefined && this.collectedPokemon !== null)
             {
                 if (this.collectedPokemon.indexOf(this.pokemon.name) !== -1){

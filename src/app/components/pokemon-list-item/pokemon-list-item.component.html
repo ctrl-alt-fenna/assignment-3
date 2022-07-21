@@ -4,7 +4,7 @@
     </p>
     <section>
         <img src="{{pokemon.avatar}}" (error)="setSrc()" [alt]="pokemon.name" class="avatar">
-        <a class="collect-btn" (click)="addToCollection()">
+        <a class="collect-btn" (click)="collectionChange()">
             <img src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png'>
         </a>
         <div class="btn-wrapper">

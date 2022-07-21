@@ -24,15 +24,21 @@ export class SessionStorageService {
         INPUT: Pokemon object containt Pokemon to be added
         OUTPUT: New collection in sessionStorage
     */
-    public setTrainerCollection(newPokemon: Pokemon) {
+    public setTrainerCollection(updatePokemon: Pokemon) {
         let storageCollection = sessionStorage.getItem(STORAGE_COLLECTION_KEY)
         // Checks if there isn't any collection yet, so it can add a new one
         if (!storageCollection) 
-            storageCollection = JSON.stringify({userid: STORAGE_USER_ID, collection: [newPokemon.name]})
+            storageCollection = JSON.stringify({userid: STORAGE_USER_ID, collection: [updatePokemon.name]})
          else {
             let collection = JSON.parse(storageCollection)
             // If the pokemon was already collected, don't add again
-            if (collection.collection.indexOf(newPokemon.name) === -1) collection.collection.push(newPokemon.name)
+            const index = collection.collection.indexOf(updatePokemon.name)
+            if (index === -1) {
+                collection.collection.push(updatePokemon.name)
+            }
+            else {
+                collection.collection = collection.collection.splice(index - 1, 1)
+            }
             storageCollection = JSON.stringify(collection)
          }
         sessionStorage.setItem(STORAGE_COLLECTION_KEY, storageCollection)

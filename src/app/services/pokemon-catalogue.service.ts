@@ -26,7 +26,9 @@ export class PokemonCatalogueService {
 
     public setCollection(pokemon?: Pokemon): void {
         if (pokemon) this._sessionStorageService.setTrainerCollection(pokemon)
-        this._collectedPokemons = JSON.parse(this._sessionStorageService.trainerCollection).collection;
+        if (this._sessionStorageService.trainerCollection !== null){
+            this._collectedPokemons = JSON.parse(this._sessionStorageService.trainerCollection).collection;
+        }
     }
     public clearStorage(): void { this._sessionStorageService.clearStorage() }
 

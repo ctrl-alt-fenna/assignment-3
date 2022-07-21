@@ -1,10 +1,10 @@
 <main>
     <h1>Pokemon Catalogue</h1>
-    <button (click)="clearStorage()">Clear storage</button>
     <p *ngIf="loading">Loading Pokemons...</p>
     <app-pokemon-list 
     [pokemons]="pokemons" 
     [collectedPokemons]="collectedPokemon"
     (updatePokemons)="updatePokemon($event)"
-    (addedToCollection)="onaddedToCollection($event)"></app-pokemon-list>
+    (addedToCollection)="onAddedToCollection($event)"
+    (removedFromCollection)="onRemovedFromCollection($event)"></app-pokemon-list>
 </main>
