@@ -14,9 +14,6 @@ export class PokemonCataloguePage implements OnInit {
     get loading(): boolean {
         return this.pokemonCatalogueService.loading;
     }
-    // get details():string[]{
-    //     return this.getDetails(0);
-    // }
     get error(): string {
         return this.pokemonCatalogueService.error;
     }
@@ -30,8 +27,8 @@ export class PokemonCataloguePage implements OnInit {
     clearStorage(): void {
         this.pokemonCatalogueService.clearStorage();
     }
-    // getDetails(id:number):string[] {
-    //     return this.pokemonCatalogueService;
-    // }
+    updatePokemon(pokemons:Pokemon[]):void {
+        this.pokemonCatalogueService.updatePokemons(pokemons); 
+    }
 
 }

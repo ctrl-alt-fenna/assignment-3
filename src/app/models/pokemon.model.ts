@@ -5,6 +5,7 @@ export class Pokemon {
     public avatar: string;
     public baseStats:string[] = [];
     public abilities:string[] = [];
+    public index:number = 0;
     public constructor(_name: string, _id: string) {
         this.formatName(_name);
         this.id = _id;

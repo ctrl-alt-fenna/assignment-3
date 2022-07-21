@@ -1,6 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Pokemon } from 'src/app/models/pokemon.model';
 import { environment } from 'src/environments/environment';
+import { SessionStorageService } from 'src/app/services/session-storage.service';
 @Component({
     selector: 'app-pokemon-list-item',
     templateUrl: './pokemon-list-item.component.html',
@@ -9,12 +10,19 @@ import { environment } from 'src/environments/environment';
 export class PokemonListItemComponent implements OnInit {
     public showstats:boolean = false
     public showabilities:boolean = false
+    public collected:boolean = false;
+    private sessionStorage:SessionStorageService = new SessionStorageService()
     @Input() pokemon!: Pokemon
+    @Output() updatePokemon = new EventEmitter<Pokemon[]>()
     setSrc(){
-        this.pokemon.avatar = `${environment.apiSprites}/0.png`
+        this.pokemon.avatar = `${environment.apiSprites}/0.png`;
+        let p = JSON.parse(this.sessionStorage.pokemons)
+        let n = this.pokemon.index 
+        p[n] = this.pokemon
+        this.updatePokemon.next(p);
     }
     // Function that inverts current selection of showing/hiding details
-    showStats(){
+    showStats(){   
         if (this.showabilities) this.showabilities = false
         this.showstats = !this.showstats
     }
@@ -22,8 +30,11 @@ export class PokemonListItemComponent implements OnInit {
         if (this.showstats) this.showstats = false
         this.showabilities = !this.showabilities
     }
+    addToCollection(){
+        this.collected = !this.collected;
+    }
     constructor() { }
-
+    
     ngOnInit(): void {
     }
 

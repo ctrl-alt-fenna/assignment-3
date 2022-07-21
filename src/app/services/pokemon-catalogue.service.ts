@@ -21,11 +21,18 @@ export class PokemonCatalogueService {
     get loading(): boolean { return this._loading }
     get baseStats(): string[] { return this._details }
     constructor(private readonly http: HttpClient) { }
-    /*  Function to clear sessionStorage
-        Input: No input
-        Output: Cleared sessionStorage for pokemon storage key
-    */
+
     public clearStorage(): void { this._sessionStorageService.clearStorage() };
+    
+    /*  Function to update pokemons in case there was an important change
+        INPUT: Array of Pokemon
+        OUTPUT: Updated this._pokemons and this._sessionStoraveService.pokemons
+    */
+    public updatePokemons(pokemons:Pokemon[])
+    {
+        this._pokemons = pokemons;
+        this._sessionStorageService.pokemons = this._pokemons;
+    }
     /*  Function to retrieve all pokemons from the API
         INPUT: No input
         OUTPUT: Sets the pokemonlist in sessionStorage and pokemon-components if sessionStorage is empty,
@@ -33,10 +40,11 @@ export class PokemonCatalogueService {
     */
     public findAllPokemons(): void {
         let storageList = this._sessionStorageService.pokemons;
+        // If there is an array of pokemons in sessionstorage, load that.
         if (storageList !== null) this._pokemons = JSON.parse(storageList);
         else {
             this._loading = true;
-            this.http.get<{ results: [{ name: string, url: string }] }>(`${apiPokemon}/?limit=2`)
+            this.http.get<{ results: [{ name: string, url: string }] }>(`${apiPokemon}/?limit=1154`)
                 .pipe(
                     finalize(() => {
                         this._loading = false;
@@ -44,7 +52,7 @@ export class PokemonCatalogueService {
                 )
                 .subscribe({
                     next: (response: { results: [{ name: string, url: string }] }) => {
-                        // If there is an array of pokemons in sessionstorage, load that.
+                        let count = 0
                         for (const item of response.results) {
                             let splitURL = item.url.split('/');
                             let id = splitURL[splitURL.length - 2];
@@ -54,8 +62,10 @@ export class PokemonCatalogueService {
                             .pipe(
                                 finalize(() => {
                                     let p = new Pokemon(item.name, id)
+                                    p.index = count;
                                     p.baseStats = baseStats;
                                     p.abilities = baseAbilities
+                                    count++;
                                     this._pokemons.push(p);
                                     this._sessionStorageService.pokemons = this._pokemons;
                                 })
