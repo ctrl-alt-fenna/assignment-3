@@ -3,7 +3,8 @@ export class Pokemon {
     public name: string = '';
     public id: string;
     public avatar: string;
-    public details:string[] = [''];
+    public baseStats:string[] = [];
+    public abilities:string[] = [];
     public constructor(_name: string, _id: string) {
         this.formatName(_name);
         this.id = _id;
@@ -17,5 +18,4 @@ export class Pokemon {
         }
         this.name = formattedName.trim();
     }
-
 }

@@ -19,7 +19,7 @@ export class PokemonCatalogueService {
     get pokemons(): Pokemon[] { return this._pokemons }
     get error(): string { return this._error }
     get loading(): boolean { return this._loading }
-    get details(): string[] { return this._details }
+    get baseStats(): string[] { return this._details }
     constructor(private readonly http: HttpClient) { }
     /*  Function to clear sessionStorage
         Input: No input
@@ -36,7 +36,7 @@ export class PokemonCatalogueService {
         if (storageList !== null) this._pokemons = JSON.parse(storageList);
         else {
             this._loading = true;
-            this.http.get<{ results: [{ name: string, url: string }] }>(`${apiPokemon}/?limit=1`)
+            this.http.get<{ results: [{ name: string, url: string }] }>(`${apiPokemon}/?limit=2`)
                 .pipe(
                     finalize(() => {
                         this._loading = false;
@@ -48,23 +48,35 @@ export class PokemonCatalogueService {
                         for (const item of response.results) {
                             let splitURL = item.url.split('/');
                             let id = splitURL[splitURL.length - 2];
-                            let p = new Pokemon(item.name, id)
+                            let baseStats = ['']
+                            let baseAbilities = ['']
                             this.http.get(`${apiPokemon}/${id}/`)
-                                .subscribe({
-                                    next: (response:any) => {
-                                        let stats = response.stats
-                                        let string = ''
-                                        p.details=[]
-                                        for (const stat of stats) {
-                                            let statName = stat.stat.name[0].toUpperCase() + stat.stat.name.substring(1);
-                                            string = statName + ": " + stat.base_stat;
-                                            p.details.push(string);
-                                        }
-                                    }
+                            .pipe(
+                                finalize(() => {
+                                    let p = new Pokemon(item.name, id)
+                                    p.baseStats = baseStats;
+                                    p.abilities = baseAbilities
+                                    this._pokemons.push(p);
+                                    this._sessionStorageService.pokemons = this._pokemons;
                                 })
-                            this._pokemons.push(p);
+                            )
+                            .subscribe({
+                                next: (response:any) => {
+                                    let stats = response.stats
+                                    let abilities = response.abilities
+                                    let string = ''
+                                    for (const stat of stats) {
+                                        let statName = stat.stat.name.toUpperCase();
+                                        string = statName + ": " + stat.base_stat;
+                                        baseStats.push(string)
+                                    }
+                                    for (const ability of abilities) {
+                                        let abilityName = ability.ability.name[0].toUpperCase() + ability.ability.name.substring(1);
+                                        baseAbilities.push(abilityName)
+                                    }
+                                }
+                            })
                         }
-                        this._sessionStorageService.pokemons = this._pokemons;
                     },
                     error: (error: HttpErrorResponse) => {
                         this._error = error.message;

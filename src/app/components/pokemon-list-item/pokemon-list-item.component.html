@@ -2,7 +2,17 @@
     <p class="pokemon-name">{{pokemon.name}}</p>
     <section>
         <img src="{{pokemon.avatar}}" (error)="setSrc()" [alt]="pokemon.name" onerr="changeSrc()">
-        <button class="main-btn" (click)="setDetails()">{{details ? 'Hide details' : 'Show details'}}</button>
-        <ul *ngIf="details" class="pokemon-info"><li *ngFor="let d of pokemon.details">{{d}}</li></ul>
+        <div class="btn-wrapper">
+            <button class="main-btn" (click)="showStats()">{{showstats ? 'Hide basestats' : 'Show basestats'}}</button>
+            <button class="main-btn" (click)="showAbilities()">{{showabilities ? 'Hide abilities' : 'Show abilities'}}</button>
+        </div>
+        <span *ngIf="showstats" class="pokemon-info">
+            <h3>Base Stats</h3>
+                <p *ngFor="let d of pokemon.baseStats">{{d}}</p>
+        </span>
+        <span *ngIf="showabilities" class="pokemon-info">
+            <h3>Abilities</h3>
+                <p *ngFor="let d of pokemon.abilities">{{d}}</p>
+        </span>
     </section>
 </div>
