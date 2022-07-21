@@ -37,7 +37,9 @@ export class SessionStorageService {
             if (index === -1) 
                 collection.collection.push(updatePokemon.name)
             // Pokemon was collected so splice array to remove it
-            else collection.collection = collection.collection.splice(index - 1, 1)
+            else {
+                collection.collection.splice(index - 1, 1)
+            }
             storageCollection = JSON.stringify(collection)
          }
         sessionStorage.setItem(STORAGE_COLLECTION_KEY, storageCollection)

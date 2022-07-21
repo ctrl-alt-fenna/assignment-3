@@ -2,7 +2,7 @@
     background-color: var(--pokemon-lighter-blue);
     border: 8px solid var(--pokemon-darker-blue);
     border-radius: 5px;
-    min-width: calc(75px);
+    min-width: calc(75px - 4em);
     box-sizing: border-box;
     text-overflow: none;
     margin: 1em 0;
@@ -54,7 +54,7 @@
 }
 .pokemon-card.wascollected img.avatar{
     opacity: 100%;
-    animation: fly 1s cubic-bezier(0.48,-0.18, 0.58, 1) 1;
+    animation: fly 0.5s cubic-bezier(0.48,-0.18, 0.58, 1) 1;
 }
 .pokemon-card.collected .collect-btn img{
     animation: spin 2s linear infinite;
