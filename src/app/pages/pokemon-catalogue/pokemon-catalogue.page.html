@@ -1,10 +1,19 @@
 <main>
     <h1>Pokémon Catalogue</h1>
     <p *ngIf="loading">Loading Pokemons...</p>
+    <div class="page-nav">
+        <h1>{{pageNumber}}/{{totalPages}}</h1>
+        <div class="btn-wrapper">
+            <button class="page-btn" (click)="loadPrev()">Previous Page</button>
+            <button class="page-btn" (click)="loadNext()">Next Page</button>
+        </div>
+    </div>
     <app-pokemon-list 
-    [pokemons]="pokemons" 
-    [collectedPokemons]="collectedPokemon"
-    (updatePokemons)="updatePokemon($event)"
-    (addedToCollection)="onAddedToCollection($event)"
-    (removedFromCollection)="onRemovedFromCollection($event)"></app-pokemon-list>
+        [pokemons]="pokemons"
+        (updatePokemons)="updatePokemon($event)"
+        (addedToCollection)="onAddedToCollection($event)"
+        (removedFromCollection)="onRemovedFromCollection($event)"
+        (viewAbilities)="onViewAbilities($event)"
+        (viewStats)="onViewStats($event)">
+    </app-pokemon-list>
 </main>

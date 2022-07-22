@@ -3,7 +3,7 @@ export class Pokemon {
     public name: string = '';
     public id: string;
     public avatar: string;
-    public baseStats:string[] = [];
+    public stats:string[] = [];
     public abilities:string[] = [];
     public index:number = 0;
     public constructor(_name: string, _id: string) {

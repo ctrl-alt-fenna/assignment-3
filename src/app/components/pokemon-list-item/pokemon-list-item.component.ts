@@ -16,6 +16,9 @@ export class PokemonListItemComponent implements OnInit {
     @Output() updatePokemon = new EventEmitter<Pokemon>()
     @Output() addedToCollection = new EventEmitter<Pokemon>()
     @Output() removedFromCollection = new EventEmitter<Pokemon>()
+
+    @Output() viewStats = new EventEmitter<Pokemon>()
+    @Output() viewAbilities = new EventEmitter<Pokemon>()
     /* Function that gets called if the image cannot be found on first retrieval,
        so it can be updated in the pokemon sessionStorage list as the default (0.png) image 
     */
@@ -25,11 +28,19 @@ export class PokemonListItemComponent implements OnInit {
     }
     // Function that inverts current selection of showing/hiding details
     showStats() {
-        if (this.showabilities) this.showabilities = false
+        if (this.showabilities) {
+            this.showabilities = !this.showabilities
+        }
         this.showstats = !this.showstats
+        this.viewStats.emit(this.pokemon)
     }
     showAbilities() {
-        if (this.showstats) this.showstats = false
+        if (this.showstats) {
+            this.showstats = !this.showstats
+        }
+        if (this.pokemon.abilities.length <= 1){
+            this.viewAbilities.emit(this.pokemon)
+        }
         this.showabilities = !this.showabilities
     }
     /*  Function to deal with collection-clicks

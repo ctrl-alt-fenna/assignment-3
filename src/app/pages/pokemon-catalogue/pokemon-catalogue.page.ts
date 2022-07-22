@@ -1,18 +1,27 @@
 import { Component, OnInit } from '@angular/core';
 import { Pokemon } from 'src/app/models/pokemon.model';
 import { PokemonCatalogueService } from 'src/app/services/pokemon-catalogue.service';
+import { PokemonDetailsService } from 'src/app/services/pokemon-details.service';
 @Component({
     selector: 'app-pokemon-catalogue',
     templateUrl: './pokemon-catalogue.page.html',
     styleUrls: ['./pokemon-catalogue.page.css']
 })
 export class PokemonCataloguePage implements OnInit {
-
+    constructor(
+        private readonly pokemonCatalogueService: PokemonCatalogueService,
+        private readonly pokemonDetailService: PokemonDetailsService
+    ) { }
+    private stats?:string[]
+    private abilities?:string[]
+    get pageNumber(): number {
+        return this.pokemonCatalogueService.pageNumber;
+    }
+    get totalPages(): number {
+        return this.pokemonCatalogueService.totalPages;
+    }
     get pokemons(): Pokemon[] {
         return this.pokemonCatalogueService.pokemons;
-    }
-    get collectedPokemon(): any {
-        return this.pokemonCatalogueService.collectedPokemons;
     }
     get loading(): boolean {
         return this.pokemonCatalogueService.loading;
@@ -20,13 +29,9 @@ export class PokemonCataloguePage implements OnInit {
     get error(): string {
         return this.pokemonCatalogueService.error;
     }
-    constructor(
-        private readonly pokemonCatalogueService: PokemonCatalogueService
-    ) { }
 
     ngOnInit(): void {
         this.pokemonCatalogueService.findAllPokemons();
-        this.pokemonCatalogueService.setCollection();
     }
     /*  Functions to deal with child-component user interactions
         INPUT: pokemon object
@@ -40,6 +45,19 @@ export class PokemonCataloguePage implements OnInit {
     }
     onRemovedFromCollection(pokemon: Pokemon): void {
         this.pokemonCatalogueService.setCollection(pokemon)
+    }
+    onViewStats(pokemon:Pokemon):void {
+        this.pokemonDetailService.getDetails(pokemon, 's');
+        // this.abilities = this.pokemonCatalogueService.updatePokemons()
+    }
+    onViewAbilities(pokemon:Pokemon):void {
+        this.pokemonDetailService.getDetails(pokemon, 'a');
+    }
+    loadNext(): void {
+        this.pokemonCatalogueService.nextPage()
+    }
+    loadPrev(): void {
+        this.pokemonCatalogueService.prevPage()
     }
 
 }

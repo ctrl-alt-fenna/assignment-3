@@ -18,8 +18,8 @@ export class SessionStorageService {
     public get pokemons(): any {
         return sessionStorage.getItem(STORAGE_POKEMON_KEY)
     }
-    public get trainerCollection(): any{
-        return sessionStorage.getItem(STORAGE_COLLECTION_KEY)
+    public get trainerCollection():any{
+        return sessionStorage.getItem(STORAGE_COLLECTION_KEY);
     }
     /*  Function to update trainercollection in sessionStorage
         INPUT: Pokemon object containt Pokemon to be added

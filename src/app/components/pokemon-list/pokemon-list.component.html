@@ -1,8 +1,10 @@
 <div class="pokemon-list">
-    <app-pokemon-list-item *ngFor="let pokemon of pokemons" 
+    <app-pokemon-list-item *ngFor="let pokemon of pokemons.slice(offset,limit)" 
     [pokemon]="pokemon" 
     [collectedPokemon]="collectedPokemons"
     (updatePokemon)="updatePokemon($event)" 
     (addedToCollection)="onAddedToCollection($event)"
-    (removedFromCollection)="onRemovedFromCollection($event)"></app-pokemon-list-item>
+    (removedFromCollection)="onRemovedFromCollection($event)"
+    (viewAbilities)="onViewAbilities($event)"
+    (viewStats)="onViewStats($event)"></app-pokemon-list-item>
 </div>
