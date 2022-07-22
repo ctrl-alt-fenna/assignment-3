@@ -10,7 +10,7 @@ export class PokemonListItemComponent implements OnInit {
     public showstats: boolean = false
     public showabilities: boolean = false
     public collected: boolean = false
-    public wasCollected:boolean = false; 
+    public wasCollected: boolean = false;
     @Input() pokemon!: Pokemon
     @Input() collectedPokemon?: string[]
     @Output() updatePokemon = new EventEmitter<Pokemon>()
@@ -31,14 +31,16 @@ export class PokemonListItemComponent implements OnInit {
         if (this.showabilities) {
             this.showabilities = !this.showabilities
         }
+        if (this.pokemon.stats.length <= 1) {
+            this.viewStats.emit(this.pokemon)
+        }
         this.showstats = !this.showstats
-        this.viewStats.emit(this.pokemon)
     }
     showAbilities() {
         if (this.showstats) {
             this.showstats = !this.showstats
         }
-        if (this.pokemon.abilities.length <= 1){
+        if (this.pokemon.abilities.length <= 1) {
             this.viewAbilities.emit(this.pokemon)
         }
         this.showabilities = !this.showabilities

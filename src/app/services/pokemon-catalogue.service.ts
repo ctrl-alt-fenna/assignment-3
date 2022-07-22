@@ -48,17 +48,33 @@ export class PokemonCatalogueService {
         this._pokemons[pokemon.index] = pokemon
         this._sessionStorageService.pokemons = this._pokemons
     }
+    /*  Functions for pagination
+        INPUT: None
+        OUTPUT: Updated offset and pagenumbers, reloaded pokemons
+    */
+    public firstPage():void{
+        if (this.pageNumber === 1) return
+        this._pageNumber = 1
+        this._offset = 0
+        this.findAllPokemons()
+    }
+    public prevPage():void {
+        if (this.pageNumber === 1) return
+        this._pageNumber--;
+        this._offset -= this._limit
+        this.findAllPokemons() 
+    }
     public nextPage():void {
         if (this._pageNumber === this._totalPages) return
         this._pageNumber++;
         this._offset += this._limit
         this.findAllPokemons() 
     }
-    public prevPage():void {
-        if (this._pageNumber === 1) return
-        this._pageNumber--;
-        this._offset -= this._limit
-        this.findAllPokemons() 
+    public lastPage():void{
+        if (this.pageNumber === this._totalPages) return
+        this._pageNumber = this._totalPages
+        this._offset = this._limit * (this.pageNumber - 1)
+        this.findAllPokemons()
     }
     /*  Function to retrieve all pokemons from the API
         INPUT: No input
@@ -75,7 +91,10 @@ export class PokemonCatalogueService {
             this.http.get<any>(url)
                 .pipe(
                     finalize(() => {
-                        this._loading = false
+                        // Set small delay before loadingscreen is removed
+                        setTimeout(() => {
+                            this._loading = false
+                        }, 150)
                         this._sessionStorageService.pokemons = this.pokemons;
                     })
                 )

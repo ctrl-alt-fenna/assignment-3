@@ -12,8 +12,6 @@ export class PokemonCataloguePage implements OnInit {
         private readonly pokemonCatalogueService: PokemonCatalogueService,
         private readonly pokemonDetailService: PokemonDetailsService
     ) { }
-    private stats?:string[]
-    private abilities?:string[]
     get pageNumber(): number {
         return this.pokemonCatalogueService.pageNumber;
     }
@@ -24,7 +22,7 @@ export class PokemonCataloguePage implements OnInit {
         return this.pokemonCatalogueService.pokemons;
     }
     get loading(): boolean {
-        return this.pokemonCatalogueService.loading;
+        return this.pokemonCatalogueService.loading
     }
     get error(): string {
         return this.pokemonCatalogueService.error;
@@ -47,17 +45,22 @@ export class PokemonCataloguePage implements OnInit {
         this.pokemonCatalogueService.setCollection(pokemon)
     }
     onViewStats(pokemon:Pokemon):void {
-        this.pokemonDetailService.getDetails(pokemon, 's');
-        // this.abilities = this.pokemonCatalogueService.updatePokemons()
+        this.pokemonDetailService.getDetails(pokemon);
     }
     onViewAbilities(pokemon:Pokemon):void {
-        this.pokemonDetailService.getDetails(pokemon, 'a');
+        this.pokemonDetailService.getDetails(pokemon);
+    }
+    loadFirst():void {
+        this.pokemonCatalogueService.firstPage()
+    }
+    loadPrev(): void {
+        this.pokemonCatalogueService.prevPage()
     }
     loadNext(): void {
         this.pokemonCatalogueService.nextPage()
     }
-    loadPrev(): void {
-        this.pokemonCatalogueService.prevPage()
+    loadLast():void {
+        this.pokemonCatalogueService.lastPage()
     }
 
 }
