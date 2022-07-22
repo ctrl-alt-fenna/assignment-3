@@ -1,16 +1,16 @@
 * {
     text-align: center;
 }
-.btn-wrapper {
+.sticky-footer {
     display:flex;
-    flex-direction: row;
+    justify-content: center;
+    bottom: 0;
+    position:fixed;
+    width: 100%;
+    box-sizing: border-box;
+}
+.btn-wrapper {
+    display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 1em;
-}
-.page-btn {
-    padding: 0.5em;
-}
-.page-nr {
-    font-weight: bold;
 }
