@@ -1,0 +1,113 @@
+.pokemon-card {
+    background-color: var(--pokemon-lighter-blue);
+    border: 8px solid var(--pokemon-darker-blue);
+    border-radius: 5px;
+    min-width: calc(75px - 4em);
+    box-sizing: border-box;
+    text-overflow: none;
+    margin: 1em 0;
+    padding: 0 2em;
+    padding-bottom: 2em;
+}
+.pokemon-name {
+    font-size: 20px;
+    font-weight: bold;
+}
+.pokemon-card .avatar-wrapper {
+    margin: 0 auto;
+    background-color: lightblue;
+    box-sizing: border-box;
+    border: 3px solid goldenrod;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+.pokemon-card .avatar{
+    opacity: 100%;
+    width: 100%;
+}
+.btn-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+.main-btn {
+    border: none;
+    border-radius: 5px;
+    padding: 1em 0.25em;
+    margin: 0 .25em;
+    font-weight: bold;
+    cursor: pointer;
+    width: 50%;
+    box-sizing: border-box;
+    background-color: var(--pokemon-yellow);
+}
+.collect-btn{
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+.collect-btn img {
+    width: 50%;
+}
+.main-btn:hover {
+    background-color: #B3A125;
+}
+.pokemon-card.wascollected img.avatar{
+    opacity: 100%;
+    animation: fly 0.5s cubic-bezier(0.48,-0.18, 0.58, 1) 1;
+}
+.pokemon-card.collected .collect-btn img{
+    animation: spin 2s linear infinite;
+}
+.pokemon-card.collected img.avatar{
+    opacity: 0%;
+    animation: fall 1s cubic-bezier(0.48,-0.18, 0.58, 1) 1;
+}
+@keyframes fall {
+    0% {
+        opacity: 100%;
+        transform: translate(0px, 0px) rotate(0deg) scale(1);
+    }
+    100% {
+        opacity: 0%;
+        transform: translate(0px, 150px) rotate(360deg) scale(0);
+    }
+}
+@keyframes fly {
+    0% {
+        opacity: 0%;
+        transform: translate(0px, 150px) rotate(360deg) scale(0);
+    }
+    100% {
+        opacity: 100%;
+        transform: translate(0px, 0px) rotate(0deg) scale();
+    }
+}
+@-moz-keyframes spin { 
+    100% { -moz-transform: rotate(360deg); } 
+}
+@-webkit-keyframes spin { 
+    100% { -webkit-transform: rotate(360deg); } 
+}
+@keyframes spin { 
+    5% {
+        -webkit-transform: rotate(45deg);
+        transform:rotate(45deg); 
+    } 
+    10% { 
+        -webkit-transform: rotate(-45deg); 
+        transform:rotate(-45deg); 
+    }
+    15% {
+        -webkit-transform: rotate(45deg);
+        transform:rotate(45deg); 
+    } 
+    20% { 
+        -webkit-transform: rotate(-45deg); 
+        transform:rotate(-45deg); 
+    }
+    35% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    } 
+}
