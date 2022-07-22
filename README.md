@@ -15,10 +15,12 @@ ng serve --open
 ```
 
 # About This Project 
-* User can view a list of Pokemon retrieved from PokeAPI
-* User can show details of these Pokemon
+* User can view a list of Pokémon retrieved from PokeAPI
+* User can show details of these Pokémon
+* User can login using username
+* User can navigate between Pokémon catalogue and trainer-collection pages
 
-# Screensots 
+# Screenshots 
 
 # Authors and Acknowledgments 
 
