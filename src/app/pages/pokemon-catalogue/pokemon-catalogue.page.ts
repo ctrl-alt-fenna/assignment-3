@@ -39,10 +39,10 @@ export class PokemonCataloguePage implements OnInit {
         this.pokemonCatalogueService.updatePokemons(pokemon);
     }
     onAddedToCollection(pokemon: Pokemon): void {
-        this.pokemonCatalogueService.setCollection(pokemon)
+        // this.pokemonCatalogueService.setCollection(pokemon)
     }
     onRemovedFromCollection(pokemon: Pokemon): void {
-        this.pokemonCatalogueService.setCollection(pokemon)
+        // this.pokemonCatalogueService.setCollection(pokemon)
     }
     onViewStats(pokemon:Pokemon):void {
         this.pokemonDetailService.getDetails(pokemon);

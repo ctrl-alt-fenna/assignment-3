@@ -33,12 +33,12 @@ export class PokemonCatalogueService {
         INPUT: Either a Pokemon-object to be added or null if we just want to update
         OUTPUT: Updated component- collectedPokemon-list
     */
-    public setCollection(pokemon?: Pokemon): void {
-        if (pokemon) this._sessionStorageService.setTrainerCollection(pokemon)
-        if (this._sessionStorageService.trainerCollection !== null) {
-            this._collectedPokemons = JSON.parse(this._sessionStorageService.trainerCollection).collection;
-        }
-    }
+    // public setCollection(pokemon?: Pokemon): void {
+    //     if (pokemon) this._sessionStorageService.setTrainerCollection(pokemon)
+    //     if (this._sessionStorageService.trainerCollection !== null) {
+    //         this._collectedPokemons = JSON.parse(this._sessionStorageService.trainerCollection).collection;
+    //     }
+    // }
 
     /*  Function to update pokemons in case there was an important change
         INPUT: Array of Pokemon
