@@ -15,6 +15,7 @@ export class PokemonListComponent implements OnInit {
     @Input() collectedPokemons?: string[]
     @Output() updatePokemons = new EventEmitter<Pokemon>()
     @Output() addedToCollection = new EventEmitter<Pokemon>()
+    @Output() addToCollection = new EventEmitter<Pokemon>()
     @Output() removedFromCollection = new EventEmitter<Pokemon>()
 
     @Output() viewStats = new EventEmitter<Pokemon>()
@@ -28,6 +29,9 @@ export class PokemonListComponent implements OnInit {
   {
     this.addedToCollection.emit(pokemon)
   }
+  // onAddToCollection(pokemon: Pokemon) {
+  //   this.addToCollection.emit(pokemon)
+  // }
   onRemovedFromCollection(pokemon:Pokemon)
   {
     this.removedFromCollection.emit(pokemon)
