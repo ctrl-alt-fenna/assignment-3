@@ -36,7 +36,6 @@
 .detail-btn {
     font-size: 24px;
     background-color: #fff;
-    /* color: var(--somewhat-white); */
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -74,7 +73,7 @@
     animation: fall 1s cubic-bezier(0.48, -0.18, 0.58, 1) 1;
 }
 
-.pokemon-card.collected .collect-btn img {
+.pokemon-card.collected .collect-btn {
     animation: spin 2s linear infinite;
 }
 

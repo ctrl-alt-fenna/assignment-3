@@ -105,7 +105,6 @@ export class PokemonCatalogueService {
                         for (const item of response.results) {
                             let splitURL = item.url.split('/')
                             let id = splitURL[splitURL.length - 2]
-                            console.log(id)
                             let p = new Pokemon(item.name, id);
                             p.index = count;
                             count++;
