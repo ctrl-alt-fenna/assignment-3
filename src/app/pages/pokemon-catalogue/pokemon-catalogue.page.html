@@ -1,5 +1,5 @@
 <main>
-    <h1>Pokémon Catalogue</h1>
+    <h1 class="main title">Pokémon Catalogue</h1>
     <p *ngIf="loading">Loading Pokemons...</p>
         <app-pokemon-list [pokemons]="pokemons" (updatePokemons)="updatePokemon($event)"
         (addedToCollection)="onAddedToCollection($event)" (removedFromCollection)="onRemovedFromCollection($event)"
