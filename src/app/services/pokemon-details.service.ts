@@ -30,7 +30,7 @@ export class PokemonDetailsService {
                     let abilities = response.abilities
                     let string = ''
                     for (const stat of stats) {
-                        let statName = stat.stat.name.toUpperCase()
+                        let statName = stat.stat.name[0].toUpperCase() + stat.stat.name.substring(1)
                         string = statName + ": " + stat.base_stat
                         this._stats.push(string)
                     }
