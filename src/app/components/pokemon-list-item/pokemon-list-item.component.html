@@ -1,20 +1,18 @@
-<div *ngIf="pokemon" class="pokemon-card {{collected ? 'collected' : ''}} {{wasCollected ? 'wascollected' : ''}}">
-    <p>
-        <span class="pokemon-name">{{pokemon.name}}</span>
-    </p>
+<div *ngIf="pokemon" class="pokemon-card 
+{{collected ? 'collected' : ''}} 
+{{wasCollected ? 'wascollected' : ''}}">
+    <span class="pokemon-name">{{pokemon.name}}</span>
     <section>
         <div class="avatar-wrapper">
             <img src="{{pokemon.avatar}}" (error)="setSrc()" [alt]="pokemon.name" class="avatar">
         </div>
         <a class="collect-btn" (click)="collectionChange()">
-            <img src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png'>
+            <img src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png' alt="Pokéball" title="Collect">
         </a>
         <div class="btn-wrapper">
-            <button class="main-btn" (click)="showStats()">
-                {{showstats ? 'Hide basestats' : 'Show basestats'}}
+            <button class="detail-btn" (click)="showStats()" title="Base Stats">📜
             </button>
-            <button class="main-btn" (click)="showAbilities()">
-                {{showabilities ? 'Hide abilities' : 'Show abilities'}}
+            <button class="detail-btn" (click)="showAbilities()" title="Abilities">⚔️
             </button>
         </div>
             <span *ngIf="showstats" class="pokemon-info">

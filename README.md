@@ -15,14 +15,20 @@ ng serve --open
 ```
 
 # About This Project 
-* User can view a list of Pokemon retrieved from PokeAPI
-* User can show details of these Pokemon
+* User can login using a username
+* User must login to view Pokémon catalogue and trainer-collection pages
+* User must enter a valid username (2 or more characters)
+* User can view a list of Pokémon retrieved from PokeAPI
+* All Pokémons have a display-image
+* All Pokémons have additional details like abilities and stats
+* User can show and hide these details on the catalogue page
+* User can navigate between Pokémon catalogue and trainer-collection pages
 
-# Screensots 
+# Screenshots 
 
 # Authors and Acknowledgments 
 
-Project created by Nienke Kapers and Fenna Ransijn. All the information and sprites for the Pokemons were provided by the [PokeAPI](https://www.pokeapi.co). 
+Project created by Nienke Kapers and Fenna Ransijn. All the information and sprites for the Pokemons were provided by the [PokeAPI](https://www.pokeapi.co). Favicon taken from official [Pokémon](https://www.pokemon.com) website. Fonts used import from [Google Fonts](https://www.fonts.google.com). 
 
 ## Further help
 
