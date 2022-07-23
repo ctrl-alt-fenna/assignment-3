@@ -1,113 +1,146 @@
 .pokemon-card {
+    width: 200px;
+    min-height: 350px;
+    margin: 0.5em;
     background-color: var(--pokemon-lighter-blue);
-    border: 8px solid var(--pokemon-darker-blue);
+    border: 12px solid var(--pokemon-darker-blue);
     border-radius: 5px;
-    min-width: calc(75px - 4em);
-    box-sizing: border-box;
-    text-overflow: none;
-    margin: 1em 0;
-    padding: 0 2em;
-    padding-bottom: 2em;
+    padding: 2em;
+    color: var(--somewhat-white);
 }
-.pokemon-name {
-    font-size: 20px;
-    font-weight: bold;
-}
+
 .pokemon-card .avatar-wrapper {
-    margin: 0 auto;
+    max-width: 125px;
+    margin: 1em auto;
     background-color: lightblue;
-    box-sizing: border-box;
-    border: 3px solid goldenrod;
+    border: 5px solid goldenrod;
     border-radius: 5px;
     box-sizing: border-box;
+    box-shadow: 2px 2px 15px black;
 }
-.pokemon-card .avatar{
+
+.avatar img {
     opacity: 100%;
-    width: 100%;
+    margin: 0 auto;
 }
+
 .btn-wrapper {
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100%;
+    gap: 1em;
 }
-.main-btn {
+
+.detail-btn {
+    font-size: 24px;
+    background-color: #fff;
+    /* color: var(--somewhat-white); */
     border: none;
     border-radius: 5px;
-    padding: 1em 0.25em;
-    margin: 0 .25em;
-    font-weight: bold;
     cursor: pointer;
-    width: 50%;
-    box-sizing: border-box;
-    background-color: var(--pokemon-yellow);
+    width: 45%;
 }
-.collect-btn{
+
+.detail-btn:hover {
+    filter: brightness(0.9);
+}
+
+.pokemon-name {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.collect-btn {
+    display: block;
     background: none;
     border: none;
     cursor: pointer;
 }
+
 .collect-btn img {
-    width: 50%;
+    width: 35%;
 }
-.main-btn:hover {
-    background-color: #B3A125;
-}
-.pokemon-card.wascollected img.avatar{
+
+/* Class-designs used for animations */
+.pokemon-card.wascollected img.avatar {
     opacity: 100%;
-    animation: fly 0.5s cubic-bezier(0.48,-0.18, 0.58, 1) 1;
+    animation: fly 0.5s cubic-bezier(0.48, -0.18, 0.58, 1) 1;
 }
-.pokemon-card.collected .collect-btn img{
+
+.pokemon-card.collected img.avatar {
+    opacity: 0%;
+    animation: fall 1s cubic-bezier(0.48, -0.18, 0.58, 1) 1;
+}
+
+.pokemon-card.collected .collect-btn img {
     animation: spin 2s linear infinite;
 }
-.pokemon-card.collected img.avatar{
-    opacity: 0%;
-    animation: fall 1s cubic-bezier(0.48,-0.18, 0.58, 1) 1;
-}
+
+/*<!-- ANIMATIONS --!>
+Animation for when user collects a pokemon
+*/
 @keyframes fall {
     0% {
         opacity: 100%;
         transform: translate(0px, 0px) rotate(0deg) scale(1);
     }
+
     100% {
         opacity: 0%;
-        transform: translate(0px, 150px) rotate(360deg) scale(0);
+        transform: translate(0px, 75px) rotate(360deg) scale(0);
     }
 }
+
+/* Animations for when user un-collects a pokemon*/
 @keyframes fly {
     0% {
         opacity: 0%;
-        transform: translate(0px, 150px) rotate(360deg) scale(0);
+        transform: translate(0px, 75px) rotate(360deg) scale(0);
     }
+
     100% {
         opacity: 100%;
         transform: translate(0px, 0px) rotate(0deg) scale();
     }
 }
-@-moz-keyframes spin { 
-    100% { -moz-transform: rotate(360deg); } 
+
+@-moz-keyframes spin {
+    100% {
+        -moz-transform: rotate(360deg);
+    }
 }
-@-webkit-keyframes spin { 
-    100% { -webkit-transform: rotate(360deg); } 
+
+@-webkit-keyframes spin {
+    100% {
+        -webkit-transform: rotate(360deg);
+    }
 }
-@keyframes spin { 
+
+@keyframes spin {
     5% {
         -webkit-transform: rotate(45deg);
-        transform:rotate(45deg); 
-    } 
-    10% { 
-        -webkit-transform: rotate(-45deg); 
-        transform:rotate(-45deg); 
+        transform: rotate(45deg);
     }
+
+    10% {
+        -webkit-transform: rotate(-45deg);
+        transform: rotate(-45deg);
+    }
+
     15% {
         -webkit-transform: rotate(45deg);
-        transform:rotate(45deg); 
-    } 
-    20% { 
-        -webkit-transform: rotate(-45deg); 
-        transform:rotate(-45deg); 
+        transform: rotate(45deg);
     }
+
+    20% {
+        -webkit-transform: rotate(-45deg);
+        transform: rotate(-45deg);
+    }
+
     35% {
         -webkit-transform: rotate(0deg);
         transform: rotate(0deg);
-    } 
+    }
 }

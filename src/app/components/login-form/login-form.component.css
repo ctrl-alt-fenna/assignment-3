@@ -1,0 +1,50 @@
+fieldset {
+    border: none;
+}
+h1 {
+    text-align: center;
+}
+.form {
+    text-align: center;
+    width: 100vw;
+    margin-top: 10vh;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+}
+.field {
+    padding: 1em;
+    box-sizing: border-box;
+}
+.field.username-input {
+    min-width: 75vw;
+    font-weight: bold;
+}
+.field.submit {
+    border-radius: 5px;
+    margin: 0 2em;
+    min-width: 15vw;
+    background-color: var(--pokemon-yellow);
+    font-weight: bold;
+    text-transform: uppercase;
+    border: 3px solid black;
+    cursor: pointer;
+    letter-spacing: 2px;
+}
+.field.submit:hover {
+    filter:brightness(0.8)
+}
+.field.submit:disabled, .field.field.field.submit:hover:disabled {
+    filter:brightness(1);
+    color: black;
+    cursor:not-allowed;
+}
+.error.login {
+    font-weight: bold;
+    width: 50%;
+    border-radius: 5px;
+    color: red;
+    text-align: center;
+    margin: 0 auto;
+    font-size: 20px;
+}

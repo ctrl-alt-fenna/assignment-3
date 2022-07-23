@@ -10,7 +10,7 @@ import { PokemonDetailsService } from 'src/app/services/pokemon-details.service'
 export class PokemonCataloguePage implements OnInit {
     constructor(
         private readonly pokemonCatalogueService: PokemonCatalogueService,
-        private readonly pokemonDetailService: PokemonDetailsService
+        private readonly pokemonDetailService: PokemonDetailsService,
     ) { }
     get pageNumber(): number {
         return this.pokemonCatalogueService.pageNumber;
@@ -51,6 +51,7 @@ export class PokemonCataloguePage implements OnInit {
         this.pokemonDetailService.getDetails(pokemon);
     }
     loadFirst():void {
+
         this.pokemonCatalogueService.firstPage()
     }
     loadPrev(): void {
