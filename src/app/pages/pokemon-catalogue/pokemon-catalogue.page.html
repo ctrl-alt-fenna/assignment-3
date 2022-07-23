@@ -11,7 +11,7 @@
             </div>
         </div>
         <app-pokemon-list [pokemons]="pokemons" (updatePokemons)="updatePokemon($event)"
-        (addedToCollection)="onAddedToCollection($event)" (addToCollection)="onAddToCollection($event)" (removedFromCollection)="onRemovedFromCollection($event)"
+        (addedToCollection)="onAddedToCollection($event)" (removedFromCollection)="onRemovedFromCollection($event)"
         (viewAbilities)="onViewAbilities($event)" (viewStats)="onViewStats($event)">
     </app-pokemon-list>
     <div *ngIf="!loading" class="page-nav">

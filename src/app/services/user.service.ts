@@ -31,7 +31,7 @@ export class UserService {
 
   public inPokemonCollection(pokemonId: string): boolean {
     if (this._trainer) {
-      return Boolean(this.trainer?.pokemons.find((pokemon: Pokemon) => pokemon.id === pokemonId));
+      return Boolean(this.trainer?.pokemons.find((pokemon: Pokemon) => pokemon.name === pokemonId));
     }
     return false;
   }

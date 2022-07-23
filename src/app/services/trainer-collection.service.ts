@@ -53,7 +53,7 @@ export class TrainerCollectionService {
     // Patch request with the trainerId and the pokemon
     return this.http.patch<Trainer>(`${apiTrainers}/${trainer.id}`, {
       // add new pokemon to current values in trainer object
-      pokemons: [...trainer.pokemons, pokemon]
+      pokemons: [...trainer.pokemons, {name: pokemon.name, avatar: pokemon.avatar}]
     }, {
       headers
     })

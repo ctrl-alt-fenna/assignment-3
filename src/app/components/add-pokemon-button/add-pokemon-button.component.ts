@@ -31,7 +31,7 @@ export class AddPokemonButtonComponent implements OnInit {
   }
 
   addToCollectionClick(): void {
-    // Add the guitar to the favorites!
+    // Add the pokemon to the collection!
     this.trainerCollectionService.addToCollection(this.pokemonId)
       .subscribe({
         next: (response: Trainer) => {
