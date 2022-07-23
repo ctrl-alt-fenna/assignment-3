@@ -1,7 +1,7 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
 import { Trainer } from 'src/app/models/trainer.model';
-import { TrainerService } from 'src/app/services/trainer.service';
+import { TrainerCollectionService } from 'src/app/services/trainer-collection.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -16,12 +16,12 @@ export class AddPokemonButtonComponent implements OnInit {
   @Input() pokemonId: string = "";
 
   get loading(): boolean {
-    return this.trainerService.loading;
+    return this.trainerCollectionService.loading;
   }
 
   constructor(
     private readonly userService: UserService,
-    private readonly trainerService: TrainerService
+    private readonly trainerCollectionService: TrainerCollectionService
   ) { }
 
   ngOnInit(): void {
@@ -32,9 +32,10 @@ export class AddPokemonButtonComponent implements OnInit {
 
   addToCollectionClick(): void {
     // Add the guitar to the favorites!
-    this.trainerService.addToCollection(this.pokemonId)
+    this.trainerCollectionService.addToCollection(this.pokemonId)
       .subscribe({
         next: (response: Trainer) => {
+          console.log(this.pokemonId)
           console.log("NEXT", response)
         },
         error: (error: HttpErrorResponse) => {

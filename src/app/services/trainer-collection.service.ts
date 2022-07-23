@@ -12,7 +12,7 @@ const { apiKey, apiPokemon, apiTrainers } = environment;
 @Injectable({
   providedIn: 'root'
 })
-export class TrainerService {
+export class TrainerCollectionService {
   private _loading: boolean = false;
 
   get loading(): boolean {
@@ -53,7 +53,7 @@ export class TrainerService {
     // Patch request with the trainerId and the pokemon
     return this.http.patch<Trainer>(`${apiTrainers}/${trainer.id}`, {
       // add new pokemon to current values in trainer object
-      favourites: [...trainer.pokemons, pokemon]
+      pokemons: [...trainer.pokemons, pokemon]
     }, {
       headers
     })

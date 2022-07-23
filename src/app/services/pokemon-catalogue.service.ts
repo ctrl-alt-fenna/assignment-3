@@ -4,7 +4,8 @@ import { environment } from 'src/environments/environment'
 import { Pokemon } from '../models/pokemon.model'
 import { finalize } from 'rxjs'
 import { SessionStorageService } from './session-storage.service'
-const { apiPokemon } = environment
+
+const { apiPokemon } = environment;
 
 @Injectable({
     providedIn: 'root'
@@ -104,6 +105,7 @@ export class PokemonCatalogueService {
                         for (const item of response.results) {
                             let splitURL = item.url.split('/')
                             let id = splitURL[splitURL.length - 2]
+                            console.log(id)
                             let p = new Pokemon(item.name, id);
                             p.index = count;
                             count++;
