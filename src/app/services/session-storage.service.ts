@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core'
 import { Pokemon } from '../models/pokemon.model'
 import { StorageKeys } from '../enums/storage-keys.enum';
+import { UserService } from './user.service';
+import { PokemonCatalogueService } from './pokemon-catalogue.service';
 
 // const STORAGE_COLLECTION_KEY = environment.STORAGE_COLLECTION_KEY
 // const STORAGE_USER_ID = environment.STORAGE_USER_ID
@@ -13,6 +15,7 @@ export class SessionStorageService {
         set-INPUT: Array of Pokemon objects to be added/retrieved
         get-OUTPUT: Stringified Pokemon object(s)
     */
+
     public set pokemons(newpokemons: Pokemon[]) {
         sessionStorage.setItem(StorageKeys.PokemonItem, JSON.stringify(newpokemons))
     }
@@ -22,6 +25,12 @@ export class SessionStorageService {
     // public get trainerCollection():any{
     //     return sessionStorage.getItem(STORAGE_COLLECTION_KEY);
     // }
+
+    constructor(
+        // private readonly pokemonService: PokemonCatalogueService,
+        // private readonly userService: UserService
+    ) { }
+
     /*  Function to update trainercollection in sessionStorage
         INPUT: Pokemon object containt Pokemon to be added
         OUTPUT: New collection in sessionStorage
@@ -49,5 +58,5 @@ export class SessionStorageService {
     public clearStorage(): void {
         sessionStorage.clear()
     }
-    constructor() { }
+
 }

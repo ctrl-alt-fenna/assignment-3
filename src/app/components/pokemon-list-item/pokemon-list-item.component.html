@@ -15,13 +15,14 @@
             <button class="detail-btn" (click)="showAbilities()" title="Abilities">⚔️
             </button>
         </div>
-        <div *ngIf="showstats" class="pokemon-info">
-            <h3>Base Stats</h3>
-            <p *ngFor="let d of pokemon.stats">{{d}}</p>
-        </div>
-        <div *ngIf="showabilities" class="pokemon-info">
-            <h3>Abilities</h3>
-            <p *ngFor="let d of pokemon.abilities">{{d}}</p>
-        </div>
-    </section>
+            <span *ngIf="showstats" class="pokemon-info">
+                <h3>Base Stats</h3>
+                <p *ngFor="let d of pokemon.stats">{{d}}</p>
+            </span>
+            <span *ngIf="showabilities" class="pokemon-info">
+                <h3>Abilities</h3>
+                <p *ngFor="let d of pokemon.abilities">{{d}}</p>
+            </span>
+        </section>
+        <app-add-pokemon-button [pokemonId]="pokemon.name"></app-add-pokemon-button>
 </div>
