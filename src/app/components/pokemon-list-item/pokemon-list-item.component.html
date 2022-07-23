@@ -6,23 +6,20 @@
         <div class="avatar-wrapper">
             <img src="{{pokemon.avatar}}" (error)="setSrc()" [alt]="pokemon.name" class="avatar">
         </div>
-        <a class="collect-btn" (click)="collectionChange()">
-            <img src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png' alt="Pokéball" title="Collect">
-        </a>
         <div class="btn-wrapper">
-            <button class="detail-btn" (click)="showStats()" title="Base Stats">📜
+            <button class="detail-btn" title="Base Stats">📜
             </button>
-            <button class="detail-btn" (click)="showAbilities()" title="Abilities">⚔️
+            <button class="detail-btn" title="Abilities">⚔️
             </button>
         </div>
-            <span *ngIf="showstats" class="pokemon-info">
+            <!-- <span *ngIf="showstats" class="pokemon-info">
                 <h3>Base Stats</h3>
                 <p *ngFor="let d of pokemon.stats">{{d}}</p>
             </span>
             <span *ngIf="showabilities" class="pokemon-info">
                 <h3>Abilities</h3>
                 <p *ngFor="let d of pokemon.abilities">{{d}}</p>
-            </span>
+            </span> -->
         </section>
-        <app-add-pokemon-button [pokemonId]="pokemon.name"></app-add-pokemon-button>
+        <app-add-pokemon-button class="collect-btn" [pokemonId]="pokemon.name" (changeClass)="changeClass()"></app-add-pokemon-button>
 </div>
