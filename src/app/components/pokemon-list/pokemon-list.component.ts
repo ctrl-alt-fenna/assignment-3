@@ -14,20 +14,19 @@ export class PokemonListComponent implements OnInit {
     @Input() abilities?: string[]
     @Input() collectedPokemons?: string[]
     @Output() updatePokemons = new EventEmitter<Pokemon>()
-    @Output() viewStats = new EventEmitter<Pokemon>()
-    @Output() viewAbilities = new EventEmitter<Pokemon>()
+
   constructor() { }
-  updatePokemon(pokemons:Pokemon)
+  updatePokemon(pokemon_:Pokemon)
   {
-    this.updatePokemons.emit(pokemons)
+    this.updatePokemons.emit(pokemon_)
   }
-  onViewStats(pokemon:Pokemon)
-  {
-    this.viewStats.emit(pokemon);
-  }
-  onViewAbilities(pokemon:Pokemon)
-  {
-    this.viewAbilities.emit(pokemon);
-  }
+  // onViewStats(pokemon:Pokemon)
+  // {
+  //   this.viewStats.emit(pokemon);
+  // }y
+  // onViewAbilities(pokemon:Pokemon)
+  // {
+  //   this.viewAbilities.emit(pokemon);
+  // }
   ngOnInit(): void {  }
 }
