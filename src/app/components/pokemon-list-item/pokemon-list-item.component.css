@@ -8,6 +8,7 @@
     padding: 2em;
     color: var(--somewhat-white);
 }
+
 .pokemon-card .avatar-wrapper {
     max-width: 125px;
     margin: 1em auto;
@@ -17,10 +18,12 @@
     box-sizing: border-box;
     box-shadow: 2px 2px 15px black;
 }
+
 .avatar img {
     opacity: 100%;
     margin: 0 auto;
 }
+
 .btn-wrapper {
     display: flex;
     flex-direction: row;
@@ -29,43 +32,52 @@
     width: 100%;
     gap: 1em;
 }
+
 .detail-btn {
-    background-color: var(--pokemon-darker-blue);
-    color: #f7f7f9;
-    font-weight: bold;
+    font-size: 24px;
+    background-color: #fff;
+    /* color: var(--somewhat-white); */
+    border: none;
+    border-radius: 5px;
     cursor: pointer;
-    padding: 1em;
     width: 45%;
 }
+
 .detail-btn:hover {
-    filter:brightness(0.9);
+    filter: brightness(0.9);
 }
+
 .pokemon-name {
     font-size: 24px;
     font-weight: bold;
 }
-.collect-btn{
+
+.collect-btn {
     display: block;
     background: none;
     border: none;
     cursor: pointer;
 }
+
 .collect-btn img {
     width: 35%;
 }
 
 /* Class-designs used for animations */
-.pokemon-card.wascollected img.avatar{
+.pokemon-card.wascollected img.avatar {
     opacity: 100%;
-    animation: fly 0.5s cubic-bezier(0.48,-0.18, 0.58, 1) 1;
+    animation: fly 0.5s cubic-bezier(0.48, -0.18, 0.58, 1) 1;
 }
-.pokemon-card.collected img.avatar{
+
+.pokemon-card.collected img.avatar {
     opacity: 0%;
-    animation: fall 1s cubic-bezier(0.48,-0.18, 0.58, 1) 1;
+    animation: fall 1s cubic-bezier(0.48, -0.18, 0.58, 1) 1;
 }
-.pokemon-card.collected .collect-btn img{
+
+.pokemon-card.collected .collect-btn img {
     animation: spin 2s linear infinite;
 }
+
 /*<!-- ANIMATIONS --!>
 Animation for when user collects a pokemon
 */
@@ -74,47 +86,61 @@ Animation for when user collects a pokemon
         opacity: 100%;
         transform: translate(0px, 0px) rotate(0deg) scale(1);
     }
+
     100% {
         opacity: 0%;
         transform: translate(0px, 75px) rotate(360deg) scale(0);
     }
 }
+
 /* Animations for when user un-collects a pokemon*/
 @keyframes fly {
     0% {
         opacity: 0%;
         transform: translate(0px, 75px) rotate(360deg) scale(0);
     }
+
     100% {
         opacity: 100%;
         transform: translate(0px, 0px) rotate(0deg) scale();
     }
 }
-@-moz-keyframes spin { 
-    100% { -moz-transform: rotate(360deg); } 
+
+@-moz-keyframes spin {
+    100% {
+        -moz-transform: rotate(360deg);
+    }
 }
-@-webkit-keyframes spin { 
-    100% { -webkit-transform: rotate(360deg); } 
+
+@-webkit-keyframes spin {
+    100% {
+        -webkit-transform: rotate(360deg);
+    }
 }
-@keyframes spin { 
+
+@keyframes spin {
     5% {
         -webkit-transform: rotate(45deg);
-        transform:rotate(45deg); 
-    } 
-    10% { 
-        -webkit-transform: rotate(-45deg); 
-        transform:rotate(-45deg); 
+        transform: rotate(45deg);
     }
+
+    10% {
+        -webkit-transform: rotate(-45deg);
+        transform: rotate(-45deg);
+    }
+
     15% {
         -webkit-transform: rotate(45deg);
-        transform:rotate(45deg); 
-    } 
-    20% { 
-        -webkit-transform: rotate(-45deg); 
-        transform:rotate(-45deg); 
+        transform: rotate(45deg);
     }
+
+    20% {
+        -webkit-transform: rotate(-45deg);
+        transform: rotate(-45deg);
+    }
+
     35% {
         -webkit-transform: rotate(0deg);
         transform: rotate(0deg);
-    } 
+    }
 }

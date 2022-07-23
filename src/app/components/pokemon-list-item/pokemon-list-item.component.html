@@ -7,14 +7,12 @@
             <img src="{{pokemon.avatar}}" (error)="setSrc()" [alt]="pokemon.name" class="avatar">
         </div>
         <a class="collect-btn" (click)="collectionChange()">
-            <img src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png'>
+            <img src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png' alt="Pokéball" title="Collect">
         </a>
         <div class="btn-wrapper">
-            <button class="detail-btn" (click)="showStats()">
-                Base Stats
+            <button class="detail-btn" (click)="showStats()" title="Base Stats">📜
             </button>
-            <button class="detail-btn" (click)="showAbilities()">
-                Abilities
+            <button class="detail-btn" (click)="showAbilities()" title="Abilities">⚔️
             </button>
         </div>
         <div *ngIf="showstats" class="pokemon-info">
