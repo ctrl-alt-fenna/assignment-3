@@ -1,5 +1,23 @@
+<<<<<<< HEAD
 <a class="collect-btn" (click)="addToCollectionClick()">
     <img src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png' 
         alt="Pokéball"
         title="Collect">
 </a>
+=======
+<aside class="absolute top-4 right-4">
+    <button 
+        (click)="addToCollectionClick()"
+        class="border border-slate-300 rounded flex justify-center items-center p-2 text-pink-600">
+        
+        <ng-container *ngIf="inCollection; then favourite else notFavourite" class="material-icons"></ng-container>
+    
+        <ng-template #favourite>
+            <span class="material-icons">favorite</span>
+        </ng-template>
+        <ng-template #notFavourite>
+            <span class="material-icons">favorite_border</span>
+        </ng-template>
+    </button>
+    </aside>
+>>>>>>> refs/remotes/origin/main
