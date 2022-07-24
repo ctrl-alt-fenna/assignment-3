@@ -25,7 +25,7 @@ export class TrainerCollectionService {
     private readonly userService: UserService
   ) { }
 
-  // Get the pokemon based on the Id.
+  // Get the pokemon based on the Name.
   public addToCollection(pokemonName: string): Observable<Trainer> {
 
     if (!this.userService.trainer) {
@@ -36,11 +36,14 @@ export class TrainerCollectionService {
     const pokemon: Pokemon | undefined = this.pokemonService.pokemonByName(pokemonName);
 
     if (!pokemon) {
-      throw new Error("addToCollection: No pokemon with id: " + pokemonName);
+      throw new Error("addToCollection: No pokemon with name: " + pokemonName);
     }
 
     if (this.userService.inPokemonCollection(pokemonName)) {
-      throw new Error("addToCollection: Pokemon already in collection");
+      // throw new Error("addToCollection: Pokemon already in collection");
+      this.userService.removeFromCollection(pokemonName)
+    } else {
+      this.userService.addToCollection(pokemon)
     }
 
     const headers = new HttpHeaders({
@@ -52,8 +55,8 @@ export class TrainerCollectionService {
 
     // Patch request with the trainerId and the pokemon
     return this.http.patch<Trainer>(`${apiTrainers}/${trainer.id}`, {
-      // add new pokemon to current values in trainer object
-      pokemons: [...trainer.pokemons, {name: pokemon.name, avatar: pokemon.avatar}]
+      // add new pokemon to current values in trainer object --> weggehaald , {name: pokemon.name, avatar: pokemon.avatar}
+      pokemons: [...trainer.pokemons]
     }, {
       headers
     })

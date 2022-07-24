@@ -35,6 +35,8 @@ export class AddPokemonButtonComponent implements OnInit {
         this.trainerCollectionService.addToCollection(this.pokemonName)
         .subscribe({
             next: (response: Trainer) => {
+                    // toegevoegd in filmpje 014, is dat nodig?????
+                    this.inCollection = this.userService.inPokemonCollection(this.pokemonName);
                     this.changeClass.emit()
                     console.log("NEXT", response)
                 },

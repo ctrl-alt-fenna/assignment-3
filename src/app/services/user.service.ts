@@ -36,4 +36,18 @@ export class UserService {
     return false;
   }
 
+  public addToCollection(pokemon: Pokemon): void {
+    if (this._trainer) {
+      console.log(pokemon.name)
+      this._trainer.pokemons.push(pokemon)
+    }
+  }
+
+  public removeFromCollection(pokemonName: string): void {
+    if (this._trainer) {
+      this._trainer.pokemons = this._trainer.pokemons.filter((pokemon: Pokemon) => pokemon.name !== pokemonName)
+    }
+
+  }
+
 }
