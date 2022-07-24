@@ -13,11 +13,11 @@ const { apiKey, apiPokemon, apiTrainers } = environment;
   providedIn: 'root'
 })
 export class TrainerCollectionService {
-  private _loading: boolean = false;
+  // private _loading: boolean = false;
 
-  get loading(): boolean {
-    return this._loading;
-  }
+  // get loading(): boolean {
+  //   return this._loading;
+  // }
 
   constructor(
     private http: HttpClient,
@@ -51,7 +51,7 @@ export class TrainerCollectionService {
       "x-api-key": apiKey
     })
 
-    this._loading = true;
+    // this._loading = true;
 
     // Patch request with the trainerId and the pokemon
     return this.http.patch<Trainer>(`${apiTrainers}/${trainer.id}`, {
@@ -66,7 +66,7 @@ export class TrainerCollectionService {
         this.userService.trainer = updatedTrainer;
       }),
       finalize(() => {
-        this._loading = false;
+        // this._loading = false;
       })
 
     )

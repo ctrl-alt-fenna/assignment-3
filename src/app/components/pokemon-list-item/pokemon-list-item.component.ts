@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core'
 import { Pokemon } from 'src/app/models/pokemon.model'
+import { TrainerCollectionService } from 'src/app/services/trainer-collection.service'
 import { environment } from 'src/environments/environment'
 @Component({
     selector: 'app-pokemon-list-item',
@@ -24,7 +25,11 @@ export class PokemonListItemComponent implements OnInit {
     }
     // Function to change html-classes for animations
     changeClass(){
-        this.collected = true;
+        this.wasCollected = false
+        if(this.collected) {
+            this.wasCollected = true;
+        }
+        this.collected = !this.collected
     }
     constructor() { }
 

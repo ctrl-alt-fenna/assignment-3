@@ -21,5 +21,14 @@
                 <p *ngFor="let d of pokemon.abilities">{{d}}</p>
             </span> -->
         </section>
+
+        <!-- <ng-container *ngIf="isCollected"; then collected else notCollected></ng-container>
+    <ng-template #collected class="collected"> -->
         <app-add-pokemon-button class="collect-btn" [pokemonName]="pokemon.name" (changeClass)="changeClass()"></app-add-pokemon-button>
+    <!-- </ng-template> -->
+        
+    <!-- <ng-template #notCollected class="wascollected">
+        <app-add-pokemon-button class="collect-btn" [pokemonName]="pokemon.name" (changeClass)="changeClass()"></app-add-pokemon-button>
+    </ng-template> -->
+        
 </div>

@@ -11,13 +11,14 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class AddPokemonButtonComponent implements OnInit {
 
+    public loading: boolean = false;
     public inCollection: boolean = false;
     // make sure the favourite button knows which pokemon is clicked
     @Input() pokemonName: string = "";
     @Output() changeClass = new EventEmitter<boolean>()
-    get loading(): boolean {
-        return this.trainerCollectionService.loading;
-    }
+    // get loading(): boolean {
+    //     return this.trainerCollectionService.loading;
+    // }
 
     constructor(
         private readonly userService: UserService,
@@ -31,11 +32,12 @@ export class AddPokemonButtonComponent implements OnInit {
     }
 
     addToCollectionClick(): void {
+        this.loading = true;
         // Add the pokemon to the collection!
         this.trainerCollectionService.addToCollection(this.pokemonName)
         .subscribe({
             next: (response: Trainer) => {
-                    // toegevoegd in filmpje 014, is dat nodig?????
+                    this.loading = false;
                     this.inCollection = this.userService.inPokemonCollection(this.pokemonName);
                     this.changeClass.emit()
                     console.log("NEXT", response)
@@ -43,7 +45,7 @@ export class AddPokemonButtonComponent implements OnInit {
                 error: (error: HttpErrorResponse) => {
                     console.log("ERROR", error.message)
                 }
-            })
+            })        
 
     }
 
