@@ -13,7 +13,7 @@ export class AddPokemonButtonComponent implements OnInit {
 
     public inCollection: boolean = false;
     // make sure the favourite button knows which pokemon is clicked
-    @Input() pokemonId: string = "";
+    @Input() pokemonName: string = "";
     @Output() changeClass = new EventEmitter<boolean>()
     get loading(): boolean {
         return this.trainerCollectionService.loading;
@@ -26,13 +26,13 @@ export class AddPokemonButtonComponent implements OnInit {
 
     ngOnInit(): void {
         // Make sure to set collect anitmation if the pokemon is in collection
-        this.inCollection = this.userService.inPokemonCollection(this.pokemonId);
+        this.inCollection = this.userService.inPokemonCollection(this.pokemonName);
         if (this.inCollection) this.changeClass.emit()
     }
 
     addToCollectionClick(): void {
         // Add the pokemon to the collection!
-        this.trainerCollectionService.addToCollection(this.pokemonId)
+        this.trainerCollectionService.addToCollection(this.pokemonName)
         .subscribe({
             next: (response: Trainer) => {
                     this.changeClass.emit()

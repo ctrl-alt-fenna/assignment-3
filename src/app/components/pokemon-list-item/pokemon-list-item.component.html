@@ -21,5 +21,5 @@
                 <p *ngFor="let d of pokemon.abilities">{{d}}</p>
             </span> -->
         </section>
-        <app-add-pokemon-button class="collect-btn" [pokemonId]="pokemon.name" (changeClass)="changeClass()"></app-add-pokemon-button>
+        <app-add-pokemon-button class="collect-btn" [pokemonName]="pokemon.name" (changeClass)="changeClass()"></app-add-pokemon-button>
 </div>
