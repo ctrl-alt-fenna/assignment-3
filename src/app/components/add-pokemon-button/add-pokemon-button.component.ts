@@ -13,7 +13,7 @@ export class AddPokemonButtonComponent implements OnInit {
 
   public inCollection: boolean = false;
   // make sure the favourite button knows which pokemon is clicked
-  @Input() pokemonId: string = "";
+  @Input() pokemonName: string = "";
 
   get loading(): boolean {
     return this.trainerCollectionService.loading;
@@ -27,15 +27,15 @@ export class AddPokemonButtonComponent implements OnInit {
   ngOnInit(): void {
     // Inputs are resolved!
     // runs only one time
-    // this.inCollection = this.userService.inPokemonCollection(this.pokemonId);
+    // this.inCollection = this.userService.inPokemonCollection(this.pokemonName);
   }
 
   addToCollectionClick(): void {
     // Add the pokemon to the collection!
-    this.trainerCollectionService.addToCollection(this.pokemonId)
+    this.trainerCollectionService.addToCollection(this.pokemonName)
       .subscribe({
         next: (response: Trainer) => {
-          console.log(this.pokemonId)
+          console.log(this.pokemonName)
           console.log("NEXT", response)
         },
         error: (error: HttpErrorResponse) => {
