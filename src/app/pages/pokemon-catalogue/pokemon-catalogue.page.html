@@ -1,9 +1,8 @@
 <main>
     <h1 class="main title">Pokémon Catalogue</h1>
     <p *ngIf="loading">Loading Pokemons...</p>
-        <app-pokemon-list [pokemons]="pokemons" (updatePokemons)="updatePokemon($event)"
-        (viewAbilities)="onViewAbilities($event)" (viewStats)="onViewStats($event)">
-    </app-pokemon-list>
+        <app-pokemon-list [pokemons]="pokemons">
+        </app-pokemon-list>
 </main>
 <footer class="sticky-footer">
     <div class="page-nav">
