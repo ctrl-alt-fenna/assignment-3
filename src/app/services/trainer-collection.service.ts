@@ -26,20 +26,20 @@ export class TrainerCollectionService {
   ) { }
 
   // Get the pokemon based on the Id.
-  public addToCollection(pokemonId: string): Observable<Trainer> {
+  public addToCollection(pokemonName: string): Observable<Trainer> {
 
     if (!this.userService.trainer) {
       throw new Error("addToCollection: There is no trainer");
     }
 
     const trainer: Trainer = this.userService.trainer;
-    const pokemon: Pokemon | undefined = this.pokemonService.pokemonById(pokemonId);
+    const pokemon: Pokemon | undefined = this.pokemonService.pokemonByName(pokemonName);
 
     if (!pokemon) {
-      throw new Error("addToCollection: No pokemon with id: " + pokemonId);
+      throw new Error("addToCollection: No pokemon with id: " + pokemonName);
     }
 
-    if (this.userService.inPokemonCollection(pokemonId)) {
+    if (this.userService.inPokemonCollection(pokemonName)) {
       throw new Error("addToCollection: Pokemon already in collection");
     }
 

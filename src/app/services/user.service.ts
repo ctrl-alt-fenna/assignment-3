@@ -29,9 +29,9 @@ export class UserService {
     // this._user  = StorageUtil.storageRead<User>(StorageKeys.User);
   }
 
-  public inPokemonCollection(pokemonId: string): boolean {
+  public inPokemonCollection(pokemonName: string): boolean {
     if (this._trainer) {
-      return Boolean(this.trainer?.pokemons.find((pokemon: Pokemon) => pokemon.name === pokemonId));
+      return Boolean(this.trainer?.pokemons.find((pokemon: Pokemon) => pokemon.name === pokemonName));
     }
     return false;
   }

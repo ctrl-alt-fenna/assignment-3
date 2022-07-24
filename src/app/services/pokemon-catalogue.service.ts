@@ -121,7 +121,7 @@ export class PokemonCatalogueService {
     }
 
     // find pokemon by id
-    public pokemonById(pokemonId: string): Pokemon | undefined {
-        return this._pokemons.find((pokemon: Pokemon) => pokemon.name === pokemonId);
+    public pokemonByName(pokemonName: string): Pokemon | undefined {
+        return this._pokemons.find((pokemon: Pokemon) => pokemon.name === pokemonName);
       }
 }
