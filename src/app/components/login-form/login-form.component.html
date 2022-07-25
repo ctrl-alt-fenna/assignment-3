@@ -1,11 +1,13 @@
-<h1>Login</h1>
-<form class="form" #loginForm="ngForm" (ngSubmit)="loginSubmit(loginForm)">
-    <fieldset>
-        <input type="text" placeholder="Enter your username" class="field username-input" ngModel name="username"
-        #username="ngModel" required minlength="2" />
-        <button type="submit" class="field submit" [disabled]="loginForm.form.invalid">Login</button>
-    </fieldset>
-</form>
-<div *ngIf="username.errors && (username.dirty || username.touched)"  class="error login">
-    <p *ngIf="username?.errors?.['minlength']">Username too short</p>
+<div class="login-form">
+    <h1>Login</h1>
+    <form class="form" #loginForm="ngForm" (ngSubmit)="loginSubmit(loginForm)">
+        <fieldset>
+            <input type="text" placeholder="Enter your username" class="field username-input" ngModel name="username"
+                #username="ngModel" required minlength="2" />
+            <button type="submit" class="field submit" [disabled]="loginForm.form.invalid">Login</button>
+        </fieldset>
+    </form>
+    <div *ngIf="username.errors && (username.dirty || username.touched)" class="error login">
+        <p *ngIf="username?.errors?.['minlength']">Username too short</p>
+    </div>
 </div>
