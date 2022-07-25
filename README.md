@@ -13,6 +13,8 @@ To start the app in a dev server, first install [Angular CLI](https://www.github
 npm install -g @angular/cli
 ng serve --open
 ```
+To use the app without installations: 
+[Heroku Deployment](https://fr-pokemon.herokuapp.com/)
 
 # About This Project 
 * User can login using a username
