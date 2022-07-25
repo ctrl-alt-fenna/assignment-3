@@ -8,8 +8,6 @@ import { environment } from 'src/environments/environment'
     styleUrls: ['./pokemon-list-item.component.css']
 })
 export class PokemonListItemComponent implements OnInit {
-    // public showstats: boolean = false
-    // public showabilities: boolean = false
     public collected:boolean = false
     public wasCollected:boolean = false
     @Input() pokemon!: Pokemon

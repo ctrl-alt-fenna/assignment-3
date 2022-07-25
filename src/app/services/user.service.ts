@@ -33,9 +33,7 @@ export class UserService {
   }
 
   public addToCollection(pokemon: Pokemon): void {
-    // let pokemonObject = {name: pokemon.name, avatar: pokemon.avatar} 
     if (this._trainer) {
-      console.log(pokemon.name)
       this._trainer.pokemons.push(pokemon)
     }
   }
@@ -43,7 +41,6 @@ export class UserService {
   public removeFromCollection(pokemonName: string): void {
     if (this._trainer) {
       this._trainer.pokemons = this._trainer.pokemons.filter((pokemon: Pokemon) => pokemon.name !== pokemonName)
-      console.log(this._trainer.pokemons)
     }
 
   }

@@ -32,10 +32,6 @@ export class LoginFormComponent {
                     this.userService.trainer = trainer;
                     this.login.emit();
                 },
-                error: () => {
-                    // handle that locally
-
-                }
             })
 
     }

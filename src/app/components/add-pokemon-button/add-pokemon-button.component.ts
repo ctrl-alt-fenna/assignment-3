@@ -1,6 +1,5 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { EventEmitter, Component, Input, Output, OnInit } from '@angular/core';
-import { Trainer } from 'src/app/models/trainer.model';
 import { TrainerCollectionService } from 'src/app/services/trainer-collection.service';
 import { UserService } from 'src/app/services/user.service';
 
@@ -13,8 +12,8 @@ export class AddPokemonButtonComponent implements OnInit {
 
     public loading: boolean = false;
     public inCollection: boolean = false;
-    // make sure the favourite button knows which pokemon is clicked
-    @Input() pokemonName: string = "";
+    // Make sure the favourite button knows which pokemon is clicked
+    @Input() pokemonName: string = '';
     @Output() changeClass = new EventEmitter<boolean>()
     constructor(
         private readonly userService: UserService,
@@ -22,7 +21,7 @@ export class AddPokemonButtonComponent implements OnInit {
     ) { }
 
     ngOnInit(): void {
-        // Make sure to set collect anitmation if the pokemon is in collection
+        // Make sure to set collect animation if the pokemon is in collection
         this.inCollection = this.userService.inPokemonCollection(this.pokemonName);
         if (this.inCollection) this.changeClass.emit()
     }
@@ -35,14 +34,10 @@ export class AddPokemonButtonComponent implements OnInit {
         // Add the pokemon to the collection!
         this.trainerCollectionService.addToCollection(this.pokemonName)
         .subscribe({
-            next: (response: Trainer) => {
+            next: () => {
                     this.loading = false;
                     this.inCollection = this.userService.inPokemonCollection(this.pokemonName);
                     this.changeClass.emit()
-                    console.log("NEXT", response)
-                },
-                error: (error: HttpErrorResponse) => {
-                    console.log("ERROR", error.message)
                 }
             })        
 

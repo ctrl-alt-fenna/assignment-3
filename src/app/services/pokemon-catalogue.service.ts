@@ -16,7 +16,7 @@ export class PokemonCatalogueService {
     private _pageNumber:number= 1
     private _totalPages:number = 0
     private _pokemons: Pokemon[] = []
-    private _error: string = ""
+    private _error: string = ''
     private _loading: boolean = false
     private _sessionStorageService = new SessionStorageService()
 

@@ -1,5 +1,4 @@
 nav {
-    /* background-color: #f5f5f7; */
     background-color: #cd3939;
     text-align: center;
     width: 100%;
@@ -10,11 +9,9 @@ nav {
 }
 .nav-link {
     color: #f5f5f7;
-    /* width: 10%; */
     padding: 1em;
     text-decoration: none;
     font-weight: bold;
-    /* font-size: 20px; */
     list-style: none;
     border-bottom: 3px solid transparent;
 }

@@ -1,4 +1,4 @@
-import { environment } from "src/environments/environment";
+import { environment } from 'src/environments/environment';
 export class Pokemon {
     public name: string = '';
     public id: string;
@@ -15,7 +15,7 @@ export class Pokemon {
         let splitName = name.split('-')
         let formattedName = ''
         for (const word of splitName) {
-            formattedName += (word[0].toUpperCase() + word.substring(1) + " ");
+            formattedName += (word[0].toUpperCase() + word.substring(1) + ' ');
         }
         this.name = formattedName.trim();
     }
