@@ -1,17 +1,7 @@
 <main>
     <h1 class="main title">Pokémon Catalogue</h1>
-    <p *ngIf="loading">Loading Pokemons...</p>
-        <app-pokemon-list [pokemons]="pokemons" (updatePokemons)="updatePokemon($event)"
-        (viewAbilities)="onViewAbilities($event)" (viewStats)="onViewStats($event)">
+    <p *ngIf="loading">Loading Pokémons...</p>
+    <app-pokemon-list [pokemons]="pokemons">
     </app-pokemon-list>
 </main>
-<footer class="sticky-footer">
-    <div class="page-nav">
-        <div class="btn-wrapper">
-            <button class="main-btn extra" (click)="loadFirst()"><<</button>
-            <button class="main-btn" (click)="loadPrev()">Previous Page</button>
-            <button class="main-btn" (click)="loadNext()">Next Page</button>
-            <button class="main-btn extra" (click)="loadLast()">>></button>
-        </div>
-    </div>
-</footer>
+<app-footer></app-footer>

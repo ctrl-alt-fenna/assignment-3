@@ -10,14 +10,8 @@ import { PokemonDetailsService } from 'src/app/services/pokemon-details.service'
 export class PokemonCataloguePage implements OnInit {
     constructor(
         private readonly pokemonCatalogueService: PokemonCatalogueService,
-        private readonly pokemonDetailService: PokemonDetailsService,
+        private readonly pokemonDetailService: PokemonDetailsService
     ) { }
-    get pageNumber(): number {
-        return this.pokemonCatalogueService.pageNumber;
-    }
-    get totalPages(): number {
-        return this.pokemonCatalogueService.totalPages;
-    }
     get pokemons(): Pokemon[] {
         return this.pokemonCatalogueService.pokemons;
     }
@@ -35,27 +29,5 @@ export class PokemonCataloguePage implements OnInit {
         INPUT: pokemon object
         OUTPUT: updated Pokemons list / trainer collection
     */
-    updatePokemon(pokemon: Pokemon): void {
-        this.pokemonCatalogueService.updatePokemons(pokemon);
-    }
-    onViewStats(pokemon:Pokemon):void {
-        this.pokemonDetailService.getDetails(pokemon);
-    }
-    onViewAbilities(pokemon:Pokemon):void {
-        this.pokemonDetailService.getDetails(pokemon);
-    }
-    loadFirst():void {
-
-        this.pokemonCatalogueService.firstPage()
-    }
-    loadPrev(): void {
-        this.pokemonCatalogueService.prevPage()
-    }
-    loadNext(): void {
-        this.pokemonCatalogueService.nextPage()
-    }
-    loadLast():void {
-        this.pokemonCatalogueService.lastPage()
-    }
-
+    updatePokemon(pokemon: Pokemon): void {this.pokemonCatalogueService.updatePokemons(pokemon);}
 }

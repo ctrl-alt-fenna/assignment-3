@@ -25,8 +25,10 @@ export class TrainerCollectionService {
     private readonly userService: UserService
   ) { }
 
-  // Get the pokemon based on the Name.
-  public addToCollection(pokemonName: string): Observable<Trainer> {
+  	/*	Function to add Pokémon to trainercollection based on name
+        INPUT: Pokémon name
+        OUTPUT: Updated trainercollection in sessionstorage/API */
+  public addToCollection(pokemonId: string): Observable<Trainer> {
 
     if (!this.userService.trainer) {
       throw new Error("addToCollection: There is no trainer");

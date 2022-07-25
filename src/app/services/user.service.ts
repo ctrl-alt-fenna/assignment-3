@@ -12,9 +12,7 @@ export class UserService {
 
   private _trainer?: Trainer; // User or undefined
 
-  get trainer(): Trainer | undefined {
-    return this._trainer;
-  }
+  get trainer(): Trainer | undefined {return this._trainer;}
 
   set trainer(trainer: Trainer | undefined) {
     StorageUtil.storageSave<Trainer>(StorageKeys.Trainer, trainer!); // ! user will never be undefined
@@ -25,8 +23,6 @@ export class UserService {
 
     const storedTrainer: Trainer | undefined = StorageUtil.storageRead<Trainer>(StorageKeys.Trainer);
     this._trainer = storedTrainer
-    // andere schrijfwijze
-    // this._user  = StorageUtil.storageRead<User>(StorageKeys.User);
   }
 
   public inPokemonCollection(pokemonName: string): boolean {

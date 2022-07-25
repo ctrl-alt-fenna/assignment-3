@@ -22,7 +22,12 @@ ng serve --open
 * All Pokémons have a display-image
 * All Pokémons have additional details like abilities and stats
 * User can show and hide these details on the catalogue page
+* Catalogue page uses pagination to avoid having to load thousands of images at once
+* User can navigate between this pages using the footer
 * User can navigate between Pokémon catalogue and trainer-collection pages
+* User can view their collection of Pokémon on their trainer page
+* User can add Pokémons to their trainer-collection on the catalogue page 
+* User can remove Pokémons from their collection on the trainer and catalogue page
 
 # Screenshots 
 

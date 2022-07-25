@@ -16,7 +16,6 @@ export class PokemonCatalogueService {
     private _pageNumber:number= 1
     private _totalPages:number = 0
     private _pokemons: Pokemon[] = []
-    private _collectedPokemons: Pokemon[] = []
     private _error: string = ""
     private _loading: boolean = false
     private _sessionStorageService = new SessionStorageService()
@@ -28,18 +27,6 @@ export class PokemonCatalogueService {
     get pageNumber():number {return this._pageNumber}
     get totalPages():number {return this._totalPages}
     constructor(private readonly http: HttpClient) { }
-
-    //!!Should be in different service
-    /*  Function to update current component trainer-collectionlist to match the sessionStorage
-        INPUT: Either a Pokemon-object to be added or null if we just want to update
-        OUTPUT: Updated component- collectedPokemon-list
-    */
-    // public setCollection(pokemon?: Pokemon): void {
-    //     if (pokemon) this._sessionStorageService.setTrainerCollection(pokemon)
-    //     if (this._sessionStorageService.trainerCollection !== null) {
-    //         this._collectedPokemons = JSON.parse(this._sessionStorageService.trainerCollection).collection;
-    //     }
-    // }
 
     /*  Function to update pokemons in case there was an important change
         INPUT: Array of Pokemon
@@ -105,7 +92,6 @@ export class PokemonCatalogueService {
                         for (const item of response.results) {
                             let splitURL = item.url.split('/')
                             let id = splitURL[splitURL.length - 2]
-                            console.log(id)
                             let p = new Pokemon(item.name, id);
                             p.index = count;
                             count++;
@@ -120,8 +106,11 @@ export class PokemonCatalogueService {
         }
     }
 
-    // find pokemon by id
-    public pokemonByName(pokemonName: string): Pokemon | undefined {
-        return this._pokemons.find((pokemon: Pokemon) => pokemon.name === pokemonName);
+    /*  Function that finds pokemon by name
+        INPUT: String of name
+        OUTPUT: An array of Pokemon with the given name or undefined if there is no Pokémon with that name
+    */
+    public pokemonById(pokemonId: string): Pokemon | undefined {
+        return this._pokemons.find((pokemon: Pokemon) => pokemon.name === pokemonId);
       }
 }

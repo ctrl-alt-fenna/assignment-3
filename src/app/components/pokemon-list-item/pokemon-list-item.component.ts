@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core'
 import { Pokemon } from 'src/app/models/pokemon.model'
-import { TrainerCollectionService } from 'src/app/services/trainer-collection.service'
+import { PokemonCatalogueService } from 'src/app/services/pokemon-catalogue.service'
 import { environment } from 'src/environments/environment'
 @Component({
     selector: 'app-pokemon-list-item',
@@ -14,16 +14,15 @@ export class PokemonListItemComponent implements OnInit {
     public wasCollected:boolean = false
     @Input() pokemon!: Pokemon
     @Input() collectedPokemon?: string[]
-    @Output() updatePokemon = new EventEmitter<Pokemon>()
 
     /* Function that gets called if the image cannot be found on first retrieval,
        so it can be updated in the pokemon sessionStorage list as the default (0.png) image 
     */
     setSrc() {
         this.pokemon.avatar = `${environment.apiSprites}/0.png`
-        this.updatePokemon.emit(this.pokemon)
+        this.pokemonCatalogueService.updatePokemons(this.pokemon)
     }
-    // Function to change html-classes for animations
+    // Function to change html-classes for collect-animations
     changeClass(){
         this.wasCollected = false
         if(this.collected) {
@@ -31,7 +30,7 @@ export class PokemonListItemComponent implements OnInit {
         }
         this.collected = !this.collected
     }
-    constructor() { }
+    constructor(private pokemonCatalogueService: PokemonCatalogueService) { }
 
     ngOnInit(): void {
     }

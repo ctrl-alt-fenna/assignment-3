@@ -9,17 +9,26 @@ const apiPokemon = environment.apiPokemon;
     providedIn: 'root'
 })
 export class PokemonDetailsService {
-    private _abilities = ['']
-    private _stats = ['']
+    private _abilities:string[] = ['']
+    private _stats:string[] = ['']
+    private _loading:boolean = false;
     get stats(): string[] { return this._stats }
     get abilities(): string[] { return this._abilities }
+    get loading():boolean {return this._loading}
+    /*  Function to retrieve additional details of specific Pokémon
+        INPUT: A pokemon object
+        OUTPUT: An updated abilities and stats array for that Pokémon (handled at the same time to avoid
+        double the load to the PokeAPI for no reason)
+    */
     getDetails(pokemon: Pokemon) {
+        this._loading = true;
         this.http.get(`${apiPokemon}/${pokemon.id}/`)
             .pipe(
                 finalize(() => {
                     pokemon.abilities = this.abilities;
                     pokemon.stats = this.stats;
                     this.pokemonCatalogueService.updatePokemons(pokemon)
+                    this._loading = false;
                 })
             )
             .subscribe({

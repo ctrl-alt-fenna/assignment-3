@@ -6,29 +6,8 @@
         <div class="avatar-wrapper">
             <img src="{{pokemon.avatar}}" (error)="setSrc()" [alt]="pokemon.name" class="avatar">
         </div>
-        <div class="btn-wrapper">
-            <button class="detail-btn" title="Base Stats">📜
-            </button>
-            <button class="detail-btn" title="Abilities">⚔️
-            </button>
-        </div>
-            <!-- <span *ngIf="showstats" class="pokemon-info">
-                <h3>Base Stats</h3>
-                <p *ngFor="let d of pokemon.stats">{{d}}</p>
-            </span>
-            <span *ngIf="showabilities" class="pokemon-info">
-                <h3>Abilities</h3>
-                <p *ngFor="let d of pokemon.abilities">{{d}}</p>
-            </span> -->
-        </section>
-
-        <!-- <ng-container *ngIf="isCollected"; then collected else notCollected></ng-container>
-    <ng-template #collected class="collected"> -->
-        <app-add-pokemon-button class="collect-btn" [pokemonName]="pokemon.name" (changeClass)="changeClass()"></app-add-pokemon-button>
-    <!-- </ng-template> -->
-        
-    <!-- <ng-template #notCollected class="wascollected">
-        <app-add-pokemon-button class="collect-btn" [pokemonName]="pokemon.name" (changeClass)="changeClass()"></app-add-pokemon-button>
-    </ng-template> -->
-        
+        <app-pokemon-list-details [pokemon]="pokemon"></app-pokemon-list-details>
+    </section>
+    <app-add-pokemon-button class="collect-btn" [pokemonId]="pokemon.name" (changeClass)="changeClass()">
+    </app-add-pokemon-button>
 </div>
