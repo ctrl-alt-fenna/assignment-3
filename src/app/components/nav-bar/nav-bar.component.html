@@ -1,6 +1,6 @@
 <nav>
-    <a class="nav-link" routerLink="/pokemons">Pokémons</a>
-    <a class="nav-link" routerLink="/trainer">Trainer</a>
+    <a class="nav-link" routerLink="/pokemons" routerLinkActive="active">Pokémons</a>
+    <a class="nav-link" routerLink="/trainer" routerLinkActive="active">Trainer</a>
     <a class="nav-link" href="https://pokeapi.co/" target="_blank">PokeAPI</a>
-    <button *ngIf="loggedIn" (click)="handleLogout()">Logout</button>
+    <button *ngIf="loggedIn" class="button" (click)="handleLogout()">Logout</button>
 </nav>

@@ -1,5 +1,6 @@
 <div *ngIf="!loading"  class="login-form">
     <h1>Login</h1>
+    <h3>Enter your username to view the catalogue and your collected pokémons</h3>
     <form class="form" #loginForm="ngForm" (ngSubmit)="loginSubmit(loginForm)">
         <fieldset>
             <input type="text" placeholder="Enter your username" class="field username-input" ngModel name="username"

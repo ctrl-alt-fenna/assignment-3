@@ -1,5 +1,5 @@
 
-import { Injectable } from '@angular/core';
+import { Injectable, Output } from '@angular/core';
 import { StorageKeys } from '../enums/storage-keys.enum';
 import { Pokemon } from '../models/pokemon.model';
 import { Trainer } from '../models/trainer.model';
@@ -18,9 +18,8 @@ export class UserService {
     StorageUtil.storageSave<Trainer>(StorageKeys.Trainer, trainer!); // ! user will never be undefined
     this._trainer = trainer;
   }
-
+  
   constructor() {
-
     const storedTrainer: Trainer | undefined = StorageUtil.storageRead<Trainer>(StorageKeys.Trainer);
     this._trainer = storedTrainer
   }
@@ -30,6 +29,9 @@ export class UserService {
       return Boolean(this.trainer?.pokemons.find((pokemon: Pokemon) => pokemon.name === pokemonName));
     }
     return false;
+  }
+  public findPokemon(pokemonName:string):Pokemon | undefined {
+    return this.trainer?.pokemons.find((pokemon: Pokemon) => pokemon.name === pokemonName)
   }
 
   public addToCollection(pokemon: Pokemon): void {

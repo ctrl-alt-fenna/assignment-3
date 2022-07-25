@@ -11,6 +11,8 @@ export class PokemonListItemComponent {
     public collected:boolean = false
     public wasCollected:boolean = false
     @Input() pokemon!: Pokemon
+    @Input() collectedPokemon?: string[]
+    @Input() showAnimation: boolean = false
 
     /* Function that gets called if the image cannot be found on first retrieval,
        so it can be updated in the pokemon sessionStorage list as the default (0.png) image 
@@ -27,5 +29,6 @@ export class PokemonListItemComponent {
         }
         this.collected = !this.collected
     }
+        
     constructor(private pokemonCatalogueService: PokemonCatalogueService) { }
 }

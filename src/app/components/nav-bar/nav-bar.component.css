@@ -5,7 +5,9 @@ nav {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    border-bottom: 1px
+    align-items: center;
+    border-bottom: 1px;
+    flex-wrap: wrap;
 }
 .nav-link {
     color: #f5f5f7;
@@ -17,4 +19,24 @@ nav {
 }
 .nav-link:hover {
 border-bottom: 3px solid white;
+}
+.nav-link.active {
+    border-bottom: 3px solid white;
+    }
+
+.button {
+    border-radius: 5px;
+    padding: 0.75em;
+    margin: 0 2em;
+    min-width: 13vw;
+    background-color: var(--pokemon-yellow);
+    font-weight: bold;
+    text-transform: uppercase;
+    border: 3px solid black;
+    cursor: pointer;
+    letter-spacing: 2px;
+}
+
+.button:hover {
+    filter:brightness(0.8)
 }

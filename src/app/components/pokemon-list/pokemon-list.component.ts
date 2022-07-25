@@ -9,6 +9,7 @@ export class PokemonListComponent  {
     public limit:number = 50
     public offset:number = 0
     @Input() pokemons!:Pokemon[]
+    @Input() showAnimation: boolean = false
 
   constructor() { }
 }
