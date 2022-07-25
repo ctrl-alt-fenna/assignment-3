@@ -3,9 +3,6 @@
     <button class="detail-btn" title="Abilities" (click)="foldAbilities()">⚔️</button>
 </div>
 <div class="info-wrapper">
-    <span *ngIf="loading">
-        Loading...
-    </span>
     <span *ngIf="showStats" class="pokemon-info">
         <h3>Base Stats</h3>
         <p *ngFor="let d of pokemon.stats">{{d}}</p>

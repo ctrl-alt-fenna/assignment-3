@@ -1,4 +1,4 @@
-<div class="login-form">
+<div *ngIf="!loading"  class="login-form">
     <h1>Login</h1>
     <form class="form" #loginForm="ngForm" (ngSubmit)="loginSubmit(loginForm)">
         <fieldset>
@@ -10,4 +10,7 @@
     <div *ngIf="username.errors && (username.dirty || username.touched)" class="error login">
         <p *ngIf="username?.errors?.['minlength']">Username too short</p>
     </div>
+</div>
+<div *ngIf="loading">
+    <p>Logging in...</p>
 </div>

@@ -1,4 +1,3 @@
-import { HttpErrorResponse } from '@angular/common/http';
 import { EventEmitter, Component, Input, Output, OnInit } from '@angular/core';
 import { TrainerCollectionService } from 'src/app/services/trainer-collection.service';
 import { UserService } from 'src/app/services/user.service';

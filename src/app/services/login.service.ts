@@ -11,6 +11,8 @@ const { apiTrainers, apiKey } = environment
 	providedIn: 'root'
 })
 export class LoginService {
+	private _loading:boolean = false
+	public get loading() {return this._loading}
 	constructor(private readonly http: HttpClient) { }
 
 	/*	Function to login user
@@ -18,9 +20,11 @@ export class LoginService {
 		OUTPUT: Retrieved/created user in API
 	*/
 	public login(username: string): Observable<Trainer> {
+		this._loading = true;
 		return this.checkUsername(username)
 			.pipe(
 				switchMap((trainer: Trainer | undefined) => {
+					this._loading = false;
 					if (trainer === undefined) {
 						return this.createUser(username);
 					}

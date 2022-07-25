@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core'
+import { Component, Input } from '@angular/core'
 import { Pokemon } from 'src/app/models/pokemon.model'
 import { PokemonCatalogueService } from 'src/app/services/pokemon-catalogue.service'
 import { environment } from 'src/environments/environment'
@@ -7,11 +7,10 @@ import { environment } from 'src/environments/environment'
     templateUrl: './pokemon-list-item.component.html',
     styleUrls: ['./pokemon-list-item.component.css']
 })
-export class PokemonListItemComponent implements OnInit {
+export class PokemonListItemComponent {
     public collected:boolean = false
     public wasCollected:boolean = false
     @Input() pokemon!: Pokemon
-    @Input() collectedPokemon?: string[]
 
     /* Function that gets called if the image cannot be found on first retrieval,
        so it can be updated in the pokemon sessionStorage list as the default (0.png) image 
@@ -29,8 +28,4 @@ export class PokemonListItemComponent implements OnInit {
         this.collected = !this.collected
     }
     constructor(private pokemonCatalogueService: PokemonCatalogueService) { }
-
-    ngOnInit(): void {
-    }
-
 }
