@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
 
@@ -7,7 +7,7 @@ import { UserService } from 'src/app/services/user.service';
   templateUrl: './nav-bar.component.html',
   styleUrls: ['./nav-bar.component.css']
 })
-export class NavBarComponent implements OnInit {
+export class NavBarComponent {
 
   get loggedIn(): boolean {
     return (this.userService.trainer !== undefined)
@@ -21,9 +21,6 @@ export class NavBarComponent implements OnInit {
   handleLogout() {
     this.userService.removeTrainer()
     this.router.navigateByUrl('/login')
-  }
-
-  ngOnInit(): void {
   }
 
 }

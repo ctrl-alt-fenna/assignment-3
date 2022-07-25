@@ -1,4 +1,4 @@
-<div class="login-form">
+<div *ngIf="!loading"  class="login-form">
     <h1>Login</h1>
     <h3>Enter your username to view the catalogue and your collected pokémons</h3>
     <form class="form" #loginForm="ngForm" (ngSubmit)="loginSubmit(loginForm)">
@@ -11,4 +11,7 @@
     <div *ngIf="username.errors && (username.dirty || username.touched)" class="error login">
         <p *ngIf="username?.errors?.['minlength']">Username too short</p>
     </div>
+</div>
+<div *ngIf="loading">
+    <p>Logging in...</p>
 </div>

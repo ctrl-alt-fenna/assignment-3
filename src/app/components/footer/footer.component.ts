@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { PokemonCatalogueService } from 'src/app/services/pokemon-catalogue.service';
 
 @Component({
@@ -6,7 +6,7 @@ import { PokemonCatalogueService } from 'src/app/services/pokemon-catalogue.serv
   templateUrl: './footer.component.html',
   styleUrls: ['./footer.component.css']
 })
-export class FooterComponent implements OnInit {
+export class FooterComponent{
 
     // Functions for page navigation
     loadFirst():void {this.pokemonCatalogueService.firstPage()}
@@ -15,8 +15,5 @@ export class FooterComponent implements OnInit {
     loadLast():void {this.pokemonCatalogueService.lastPage()}
 
   constructor(private readonly pokemonCatalogueService: PokemonCatalogueService) { }
-
-  ngOnInit(): void {
-  }
 
 }
