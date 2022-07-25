@@ -110,7 +110,7 @@ export class PokemonCatalogueService {
         INPUT: String of name
         OUTPUT: An array of Pokemon with the given name or undefined if there is no Pokémon with that name
     */
-    public pokemonById(pokemonId: string): Pokemon | undefined {
-        return this._pokemons.find((pokemon: Pokemon) => pokemon.name === pokemonId);
+    public pokemonByName(pokemonName: string): Pokemon | undefined {
+        return this._pokemons.find((pokemon: Pokemon) => pokemon.name === pokemonName);
       }
 }
