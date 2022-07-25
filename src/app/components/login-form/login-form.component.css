@@ -1,13 +1,13 @@
 fieldset {
     border: none;
 }
-h1 {
+h1, h3 {
     text-align: center;
 }
 .form {
     text-align: center;
     width: 100vw;
-    margin-top: 10vh;
+    margin-top: 5vh;
     box-sizing: border-box;
     display: flex;
     justify-content: center;

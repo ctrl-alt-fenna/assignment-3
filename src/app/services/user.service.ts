@@ -1,5 +1,5 @@
 
-import { Injectable } from '@angular/core';
+import { Injectable, Output } from '@angular/core';
 import { StorageKeys } from '../enums/storage-keys.enum';
 import { Pokemon } from '../models/pokemon.model';
 import { Trainer } from '../models/trainer.model';
@@ -11,6 +11,8 @@ import { StorageUtil } from '../utils/storage.util';
 export class UserService {
 
   private _trainer?: Trainer; // User or undefined
+  // private _showAnimation: boolean = false;
+  // @Output() showAnimation!: boolean
 
   get trainer(): Trainer | undefined {return this._trainer;}
 
@@ -19,8 +21,15 @@ export class UserService {
     this._trainer = trainer;
   }
 
-  constructor() {
+  // get showAnimation(): boolean {
+  //   return this._showAnimation
+  // }
 
+  // set showAnimation(value: boolean) {
+  //   this._showAnimation
+  // }
+
+  constructor() {
     const storedTrainer: Trainer | undefined = StorageUtil.storageRead<Trainer>(StorageKeys.Trainer);
     this._trainer = storedTrainer
   }

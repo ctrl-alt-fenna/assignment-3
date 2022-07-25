@@ -1,7 +1,7 @@
 <header *ngIf="trainer">
-    <h1>Welcome, {{trainer.username}}</h1>
+    <h1 class="first-capital">Welcome, {{trainer.username}}</h1>
 </header>
 <main>
     <h4>Your Collected Pokemons</h4>
-    <app-pokemon-list [pokemons] ="pokemons"></app-pokemon-list>
+    <app-pokemon-list [pokemons]="pokemons" [showAnimation]="showAnimation"></app-pokemon-list>
 </main>

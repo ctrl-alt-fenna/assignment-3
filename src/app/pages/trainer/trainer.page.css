@@ -1,14 +1,7 @@
 * {
     text-align: center;
 }
-.sticky-footer {
-    display:flex;
-    justify-content: center;
-    bottom: 0;
-    position:fixed;
-    width: 100%;
-    box-sizing: border-box;
-}
+
 .btn-wrapper {
     display: flex;
     justify-content: center;
@@ -16,4 +9,8 @@
 }
 .main.title {
     margin: 0.5em auto;
+}
+
+.first-capital {
+    text-transform: capitalize;
 }

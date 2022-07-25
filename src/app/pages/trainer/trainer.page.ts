@@ -10,6 +10,8 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class TrainerPage {
 
+  public showAnimation = false
+
   get trainer(): Trainer | undefined {
     return this.userService.trainer;
   }

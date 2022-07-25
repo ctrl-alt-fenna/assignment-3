@@ -10,8 +10,10 @@ import { environment } from 'src/environments/environment'
 export class PokemonListItemComponent implements OnInit {
     public collected:boolean = false
     public wasCollected:boolean = false
+    // public showAnimation: boolean = false
     @Input() pokemon!: Pokemon
     @Input() collectedPokemon?: string[]
+    @Input() showAnimation: boolean = false
 
     /* Function that gets called if the image cannot be found on first retrieval,
        so it can be updated in the pokemon sessionStorage list as the default (0.png) image 
@@ -28,6 +30,13 @@ export class PokemonListItemComponent implements OnInit {
         }
         this.collected = !this.collected
     }
+
+    // toggleShowAnimation() {
+    //     this.showAnimation = false 
+    //     if (this.showAnimation)
+
+    // }
+        
     constructor(private pokemonCatalogueService: PokemonCatalogueService) { }
 
     ngOnInit(): void {

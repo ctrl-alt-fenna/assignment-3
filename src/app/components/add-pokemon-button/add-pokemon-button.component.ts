@@ -14,7 +14,9 @@ export class AddPokemonButtonComponent implements OnInit {
     public inCollection: boolean = false;
     // Make sure the favourite button knows which pokemon is clicked
     @Input() pokemonName: string = '';
+    @Input() showAnimation: boolean = false
     @Output() changeClass = new EventEmitter<boolean>()
+
     constructor(
         private readonly userService: UserService,
         private readonly trainerCollectionService: TrainerCollectionService

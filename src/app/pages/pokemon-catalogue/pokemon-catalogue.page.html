@@ -1,7 +1,7 @@
 <main>
     <h1 class="main title">Pokémon Catalogue</h1>
     <p *ngIf="loading">Loading Pokémons...</p>
-    <app-pokemon-list [pokemons]="pokemons">
+    <app-pokemon-list [pokemons]="pokemons" [showAnimation]="showAnimation">
     </app-pokemon-list>
 </main>
 <app-footer></app-footer>
