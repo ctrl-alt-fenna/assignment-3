@@ -11,16 +11,3 @@
     <app-add-pokemon-button class="collect-btn" [pokemonName]="pokemon.name" [showAnimation]="showAnimation" (changeClass)="changeClass()">
     </app-add-pokemon-button>
 </div>
-<!-- <div *ngIf="pokemon && showAnimation" class="pokemon-card 
-{{collected ? 'collected' : ''}} 
-{{wasCollected ? 'wascollected' : ''}}">
-    <span class="pokemon-name">{{pokemon.name}}</span>
-    <section>
-        <div class="avatar-wrapper">
-            <img src="{{pokemon.avatar}}" (error)="setSrc()" [alt]="pokemon.name" class="avatar">
-        </div>
-        <app-pokemon-list-details [pokemon]="pokemon"></app-pokemon-list-details>
-    </section>
-    <app-add-pokemon-button class="collect-btn" [pokemonName]="pokemon.name" (changeClass)="changeClass()">
-    </app-add-pokemon-button>
-</div> -->

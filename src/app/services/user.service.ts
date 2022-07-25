@@ -11,8 +11,6 @@ import { StorageUtil } from '../utils/storage.util';
 export class UserService {
 
   private _trainer?: Trainer; // User or undefined
-  // private _showAnimation: boolean = false;
-  // @Output() showAnimation!: boolean
 
   get trainer(): Trainer | undefined {return this._trainer;}
 
@@ -20,15 +18,7 @@ export class UserService {
     StorageUtil.storageSave<Trainer>(StorageKeys.Trainer, trainer!); // ! user will never be undefined
     this._trainer = trainer;
   }
-
-  // get showAnimation(): boolean {
-  //   return this._showAnimation
-  // }
-
-  // set showAnimation(value: boolean) {
-  //   this._showAnimation
-  // }
-
+  
   constructor() {
     const storedTrainer: Trainer | undefined = StorageUtil.storageRead<Trainer>(StorageKeys.Trainer);
     this._trainer = storedTrainer

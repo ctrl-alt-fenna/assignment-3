@@ -10,7 +10,6 @@ import { environment } from 'src/environments/environment'
 export class PokemonListItemComponent implements OnInit {
     public collected:boolean = false
     public wasCollected:boolean = false
-    // public showAnimation: boolean = false
     @Input() pokemon!: Pokemon
     @Input() collectedPokemon?: string[]
     @Input() showAnimation: boolean = false
@@ -30,12 +29,6 @@ export class PokemonListItemComponent implements OnInit {
         }
         this.collected = !this.collected
     }
-
-    // toggleShowAnimation() {
-    //     this.showAnimation = false 
-    //     if (this.showAnimation)
-
-    // }
         
     constructor(private pokemonCatalogueService: PokemonCatalogueService) { }
 

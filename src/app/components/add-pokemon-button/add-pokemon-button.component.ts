@@ -1,4 +1,3 @@
-import { HttpErrorResponse } from '@angular/common/http';
 import { EventEmitter, Component, Input, Output, OnInit } from '@angular/core';
 import { TrainerCollectionService } from 'src/app/services/trainer-collection.service';
 import { UserService } from 'src/app/services/user.service';
@@ -12,7 +11,7 @@ export class AddPokemonButtonComponent implements OnInit {
 
     public loading: boolean = false;
     public inCollection: boolean = false;
-    // Make sure the favourite button knows which pokemon is clicked
+    // Make sure the collect button knows which pokemon is clicked
     @Input() pokemonName: string = '';
     @Input() showAnimation: boolean = false
     @Output() changeClass = new EventEmitter<boolean>()
@@ -33,7 +32,7 @@ export class AddPokemonButtonComponent implements OnInit {
     */
     addToCollectionClick(): void {
         this.loading = true;
-        // Add the pokemon to the collection!
+        // Add the pokemon to the collection
         this.trainerCollectionService.addToCollection(this.pokemonName)
         .subscribe({
             next: () => {

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Pokemon } from 'src/app/models/pokemon.model';
 import { PokemonCatalogueService } from 'src/app/services/pokemon-catalogue.service';
 import { PokemonDetailsService } from 'src/app/services/pokemon-details.service';
@@ -16,7 +16,6 @@ export class PokemonCataloguePage implements OnInit {
         private readonly userService: UserService
     ) { }
 
-    // @Input showAnimation!: boolean
     public showAnimation = true;
 
     get pokemons(): Pokemon[] {
@@ -29,18 +28,8 @@ export class PokemonCataloguePage implements OnInit {
         return this.pokemonCatalogueService.error;
     }
 
-    // get showAnimation(): boolean {
-    //     return this.userService.showAnimation
-    // }
-
-    // set showAnimation(value: boolean) {
-    //     this.userService.showAnimation(value)
-    // }
-
     ngOnInit(): void {
         this.pokemonCatalogueService.findAllPokemons();
-        // this.showAnimation = false
-        // this.showAnimation()
     }
     /*  Functions to deal with child-component user interactions
         INPUT: pokemon object
