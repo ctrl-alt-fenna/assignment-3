@@ -32,7 +32,10 @@ To use the app without installations:
 * User can remove Pokémons from their collection on the trainer and catalogue page
 
 # Screenshots 
-
+# Login Page 
+![Login Page](./screenshots/login_screen.png)
+![Pokemon Catalogue](./screenshots/pokemon_catalogue.png)
+![Trainer Collection](./screenshots/trainer_collection.png)
 # Authors and Acknowledgments 
 
 Project created by Nienke Kapers and Fenna Ransijn. All the information and sprites for the Pokemons were provided by the [PokeAPI](https://www.pokeapi.co). Favicon taken from official [Pokémon](https://www.pokemon.com) website. Fonts used import from [Google Fonts](https://www.fonts.google.com). 
