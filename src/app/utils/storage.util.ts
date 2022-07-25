@@ -17,4 +17,8 @@ export class StorageUtil {
             return undefined;
         }
     }
+
+    public static storageClearTrainer(trainer: any) {
+        sessionStorage.removeItem(trainer);
+    }
 }

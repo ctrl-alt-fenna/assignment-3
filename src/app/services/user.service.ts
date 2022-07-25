@@ -52,4 +52,9 @@ export class UserService {
 
   }
 
+  public removeTrainer() {
+    StorageUtil.storageClearTrainer(StorageKeys.Trainer);
+    this._trainer = undefined;
+  }
+
 }

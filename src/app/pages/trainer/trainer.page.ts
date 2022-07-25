@@ -14,7 +14,7 @@ export class TrainerPage {
     return this.userService.trainer;
   }
 
-  // getter for favourites
+  // getter for pokemons
   get pokemons(): Pokemon[] {
 
     if(this.userService.trainer) {
