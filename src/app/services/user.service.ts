@@ -30,6 +30,9 @@ export class UserService {
     }
     return false;
   }
+  public findPokemon(pokemonName:string):Pokemon | undefined {
+    return this.trainer?.pokemons.find((pokemon: Pokemon) => pokemon.name === pokemonName)
+  }
 
   public addToCollection(pokemon: Pokemon): void {
     if (this._trainer) {

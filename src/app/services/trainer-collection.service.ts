@@ -29,10 +29,10 @@ export class TrainerCollectionService {
     }
 
     const trainer: Trainer = this.userService.trainer;
-    const pokemon: Pokemon | undefined = this.pokemonService.pokemonByName(pokemonName);
-
+    let pokemon: Pokemon | undefined = this.pokemonService.pokemonByName(pokemonName) === undefined ?
+    this.userService.findPokemon(pokemonName) : this.pokemonService.pokemonByName(pokemonName);
     if (!pokemon) {
-      throw new Error('addToCollection: No pokemon with name: ' + pokemonName);
+    throw new Error('addToCollection: No pokemon with name: ' + pokemonName);
     }
 
     if (this.userService.inPokemonCollection(pokemonName)) {

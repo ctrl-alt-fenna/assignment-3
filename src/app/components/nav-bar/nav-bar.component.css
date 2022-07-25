@@ -6,7 +6,8 @@ nav {
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    border-bottom: 1px
+    border-bottom: 1px;
+    flex-wrap: wrap;
 }
 .nav-link {
     color: #f5f5f7;
