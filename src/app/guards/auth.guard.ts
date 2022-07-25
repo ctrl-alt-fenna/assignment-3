@@ -12,6 +12,7 @@ export class AuthGuard implements CanActivate {
         private readonly userService: UserService) {
 
     }
+    // Function to check if user is logged in, otherwise sends them to login page
     canActivate(
         route: ActivatedRouteSnapshot,
         state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {

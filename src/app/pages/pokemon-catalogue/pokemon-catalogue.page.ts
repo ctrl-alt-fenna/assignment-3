@@ -29,27 +29,5 @@ export class PokemonCataloguePage implements OnInit {
         INPUT: pokemon object
         OUTPUT: updated Pokemons list / trainer collection
     */
-    updatePokemon(pokemon: Pokemon): void {
-        this.pokemonCatalogueService.updatePokemons(pokemon);
-    }
-    onViewStats(pokemon:Pokemon):void {
-        this.pokemonDetailService.getDetails(pokemon);
-    }
-    onViewAbilities(pokemon:Pokemon):void {
-        this.pokemonDetailService.getDetails(pokemon);
-    }
-    loadFirst():void {
-
-        this.pokemonCatalogueService.firstPage()
-    }
-    loadPrev(): void {
-        this.pokemonCatalogueService.prevPage()
-    }
-    loadNext(): void {
-        this.pokemonCatalogueService.nextPage()
-    }
-    loadLast():void {
-        this.pokemonCatalogueService.lastPage()
-    }
-
+    updatePokemon(pokemon: Pokemon): void {this.pokemonCatalogueService.updatePokemons(pokemon);}
 }

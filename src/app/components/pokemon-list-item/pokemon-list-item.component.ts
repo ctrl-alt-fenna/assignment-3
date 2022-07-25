@@ -22,7 +22,7 @@ export class PokemonListItemComponent implements OnInit {
         this.pokemon.avatar = `${environment.apiSprites}/0.png`
         this.pokemonCatalogueService.updatePokemons(this.pokemon)
     }
-    // Function to change html-classes for animations
+    // Function to change html-classes for collect-animations
     changeClass(){
         this.collected = true;
     }

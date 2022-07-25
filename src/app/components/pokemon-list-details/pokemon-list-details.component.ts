@@ -10,10 +10,17 @@ export class PokemonListDetailsComponent implements OnInit {
   @Input() pokemon! : Pokemon;
   public showAbilities:boolean = false;
   public showStats:boolean = false;
+  get loading(): boolean {
+    return this.pokemonDetailsService.loading;
+  }
   constructor(private pokemonDetailsService: PokemonDetailsService) { }
 
   ngOnInit(): void {
   }
+  /*    Functions to show and hide the stats and/or abilities
+        INPUT: Click on the stats/abilities button
+        OUTPUT: Hidden/shown stats/abilities info
+ */
   foldStats():void {
     if (this.showAbilities) this.showAbilities = false;
     else {

@@ -15,10 +15,6 @@ export class AddPokemonButtonComponent implements OnInit {
     // make sure the favourite button knows which pokemon is clicked
     @Input() pokemonId: string = "";
     @Output() changeClass = new EventEmitter<boolean>()
-    get loading(): boolean {
-        return this.trainerCollectionService.loading;
-    }
-
     constructor(
         private readonly userService: UserService,
         private readonly trainerCollectionService: TrainerCollectionService
@@ -29,7 +25,10 @@ export class AddPokemonButtonComponent implements OnInit {
         this.inCollection = this.userService.inPokemonCollection(this.pokemonId);
         if (this.inCollection) this.changeClass.emit()
     }
-
+    /*  Function to send updated trainer-collectionlist to sessionstorage/API after click on Pokéball
+        INPUT: Click on the pokéball of any given Pokémon
+        OUTPUT: That Pokémon added to the trainercollection
+    */
     addToCollectionClick(): void {
         // Add the pokemon to the collection!
         this.trainerCollectionService.addToCollection(this.pokemonId)

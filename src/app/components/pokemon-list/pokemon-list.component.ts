@@ -7,8 +7,7 @@ import { Pokemon } from 'src/app/models/pokemon.model'
 })
 export class PokemonListComponent implements OnInit {
     public limit:number = 50
-    public current:number = 0
-    public offset:number = this.current
+    public offset:number = 0
     @Input() pokemons!:Pokemon[]
 
   constructor() { }
