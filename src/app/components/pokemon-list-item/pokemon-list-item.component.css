@@ -23,29 +23,6 @@
     opacity: 100%;
     margin: 0 auto;
 }
-
-.btn-wrapper {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    flex-wrap: wrap;
-    width: 100%;
-    gap: 1em;
-}
-
-.detail-btn {
-    font-size: 24px;
-    background-color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    width: 45%;
-}
-
-.detail-btn:hover {
-    filter: brightness(0.9);
-}
-
 .pokemon-name {
     font-size: 24px;
     font-weight: bold;

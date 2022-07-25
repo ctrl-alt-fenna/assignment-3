@@ -10,7 +10,7 @@ import { PokemonDetailsService } from 'src/app/services/pokemon-details.service'
 export class PokemonCataloguePage implements OnInit {
     constructor(
         private readonly pokemonCatalogueService: PokemonCatalogueService,
-        private readonly pokemonDetailService: PokemonDetailsService,
+        private readonly pokemonDetailService: PokemonDetailsService
     ) { }
     get pokemons(): Pokemon[] {
         return this.pokemonCatalogueService.pokemons;
@@ -38,4 +38,18 @@ export class PokemonCataloguePage implements OnInit {
     onViewAbilities(pokemon:Pokemon):void {
         this.pokemonDetailService.getDetails(pokemon);
     }
+    loadFirst():void {
+
+        this.pokemonCatalogueService.firstPage()
+    }
+    loadPrev(): void {
+        this.pokemonCatalogueService.prevPage()
+    }
+    loadNext(): void {
+        this.pokemonCatalogueService.nextPage()
+    }
+    loadLast():void {
+        this.pokemonCatalogueService.lastPage()
+    }
+
 }
