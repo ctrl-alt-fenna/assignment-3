@@ -24,7 +24,11 @@ export class PokemonListItemComponent implements OnInit {
     }
     // Function to change html-classes for collect-animations
     changeClass(){
-        this.collected = true;
+        this.wasCollected = false
+        if(this.collected) {
+            this.wasCollected = true;
+        }
+        this.collected = !this.collected
     }
     constructor(private pokemonCatalogueService: PokemonCatalogueService) { }
 

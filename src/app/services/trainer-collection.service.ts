@@ -13,11 +13,11 @@ const { apiKey, apiPokemon, apiTrainers } = environment;
   providedIn: 'root'
 })
 export class TrainerCollectionService {
-  private _loading: boolean = false;
+  // private _loading: boolean = false;
 
-  get loading(): boolean {
-    return this._loading;
-  }
+  // get loading(): boolean {
+  //   return this._loading;
+  // }
 
   constructor(
     private http: HttpClient,
@@ -35,14 +35,17 @@ export class TrainerCollectionService {
     }
 
     const trainer: Trainer = this.userService.trainer;
-    const pokemon: Pokemon | undefined = this.pokemonService.pokemonById(pokemonId);
+    const pokemon: Pokemon | undefined = this.pokemonService.pokemonByName(pokemonName);
 
     if (!pokemon) {
-      throw new Error("addToCollection: No pokemon with id: " + pokemonId);
+      throw new Error("addToCollection: No pokemon with name: " + pokemonName);
     }
 
-    if (this.userService.inPokemonCollection(pokemonId)) {
-      throw new Error("addToCollection: Pokemon already in collection");
+    if (this.userService.inPokemonCollection(pokemonName)) {
+      // throw new Error("addToCollection: Pokemon already in collection");
+      this.userService.removeFromCollection(pokemonName)
+    } else {
+      this.userService.addToCollection(pokemon)
     }
 
     const headers = new HttpHeaders({
@@ -50,12 +53,12 @@ export class TrainerCollectionService {
       "x-api-key": apiKey
     })
 
-    this._loading = true;
+    // this._loading = true;
 
     // Patch request with the trainerId and the pokemon
     return this.http.patch<Trainer>(`${apiTrainers}/${trainer.id}`, {
-      // add new pokemon to current values in trainer object
-      pokemons: [...trainer.pokemons, {name: pokemon.name, avatar: pokemon.avatar}]
+      // add new pokemon to current values in trainer object --> weggehaald , {name: pokemon.name, avatar: pokemon.avatar}
+      pokemons: [...trainer.pokemons]
     }, {
       headers
     })
@@ -65,7 +68,7 @@ export class TrainerCollectionService {
         this.userService.trainer = updatedTrainer;
       }),
       finalize(() => {
-        this._loading = false;
+        // this._loading = false;
       })
 
     )

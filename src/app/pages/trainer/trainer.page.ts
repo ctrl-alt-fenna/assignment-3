@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Pokemon } from 'src/app/models/pokemon.model';
 import { Trainer } from 'src/app/models/trainer.model';
 import { UserService } from 'src/app/services/user.service';
 
@@ -13,13 +14,15 @@ export class TrainerPage {
     return this.userService.trainer;
   }
 
-  // getter for favourites
-  // get favourites(): Guitar[] {
-  //   if(this.userService.user) {
-  //     return this.userService.user.favourites;
-  //   }
-  //   return [];
-  // }
+  // getter for pokemons
+  get pokemons(): Pokemon[] {
+
+    if(this.userService.trainer) {
+      return this.userService.trainer.pokemons;
+    }
+    
+    return [];
+  }
 
   constructor(
     private userService: UserService

@@ -11,9 +11,10 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class AddPokemonButtonComponent implements OnInit {
 
+    public loading: boolean = false;
     public inCollection: boolean = false;
     // make sure the favourite button knows which pokemon is clicked
-    @Input() pokemonId: string = "";
+    @Input() pokemonName: string = "";
     @Output() changeClass = new EventEmitter<boolean>()
     constructor(
         private readonly userService: UserService,
@@ -22,7 +23,7 @@ export class AddPokemonButtonComponent implements OnInit {
 
     ngOnInit(): void {
         // Make sure to set collect anitmation if the pokemon is in collection
-        this.inCollection = this.userService.inPokemonCollection(this.pokemonId);
+        this.inCollection = this.userService.inPokemonCollection(this.pokemonName);
         if (this.inCollection) this.changeClass.emit()
     }
     /*  Function to send updated trainer-collectionlist to sessionstorage/API after click on Pokéball
@@ -30,17 +31,20 @@ export class AddPokemonButtonComponent implements OnInit {
         OUTPUT: That Pokémon added to the trainercollection
     */
     addToCollectionClick(): void {
+        this.loading = true;
         // Add the pokemon to the collection!
-        this.trainerCollectionService.addToCollection(this.pokemonId)
+        this.trainerCollectionService.addToCollection(this.pokemonName)
         .subscribe({
             next: (response: Trainer) => {
+                    this.loading = false;
+                    this.inCollection = this.userService.inPokemonCollection(this.pokemonName);
                     this.changeClass.emit()
                     console.log("NEXT", response)
                 },
                 error: (error: HttpErrorResponse) => {
                     console.log("ERROR", error.message)
                 }
-            })
+            })        
 
     }
 

@@ -60,4 +60,9 @@ export class LoginService {
   }
 
   // IF User || Created User - Store user
+
+  // Logout
+  public logout() {
+    
+  }
 }
